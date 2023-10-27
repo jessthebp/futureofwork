@@ -1,0 +1,13 @@
+{% extends "spinner/base.html" %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{ formset.management_form }}
+    {% for form in formset %}
+        {{ form.as_p }}
+    {% endfor %}
+    <input type="submit" value="Add Pieces">
+</form>
+
+{% endblock %}

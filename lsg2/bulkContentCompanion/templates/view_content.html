@@ -1,0 +1,45 @@
+<div class="tab-content mt-3">
+    {% for content in contents %}
+    <div class="tab-pane {% if forloop.first %}active{% endif %}" id="tab{{ content.id }}">
+        <div id="contentDisplay{{ content.id }}">
+            {{ content.content|linebreaks }}
+        </div>
+        <div id="contentEdit{{ content.id }}" style="display: none;">
+            <textarea class="form-control" rows="10" id="contentTextarea{{ content.id }}">{{ content.content }}</textarea>
+            <button class="btn btn-primary mt-2" onclick="saveContent({{ content.id }})">Save</button>
+        </div>
+        <button class="btn btn-secondary mt-2" onclick="toggleEdit({{ content.id }})">Edit</button>
+    </div>
+    {% endfor %}
+</div>
+<script>
+function toggleEdit(contentId) {
+    document.getElementById(`contentDisplay${contentId}`).style.display = 'none';
+    document.getElementById(`contentEdit${contentId}`).style.display = 'block';
+}
+
+function saveContent(contentId) {
+    const updatedContent = document.getElementById(`contentTextarea${contentId}`).value;
+
+    // Send the updated content to the backend
+    fetch(`/update_content/${contentId}/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token }}'  // Include CSRF token for Django
+        },
+        body: JSON.stringify({
+            content: updatedContent
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            document.getElementById(`contentDisplay${contentId}`).innerHTML = updatedContent.replace(/\n/g, '<br/>');
+            toggleEdit(contentId);  // Switch back to display mode
+        } else {
+            alert("Failed to update content. Please try again.");
+        }
+    });
+}
+</script>

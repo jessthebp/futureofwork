@@ -1,0 +1,11 @@
+{% extends "spinner/base.html" %}
+
+{% block content %}
+    <h2>Confirm Delete</h2>
+    <p>Are you sure you want to delete the project "{{ object.project_id }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, Delete</button>
+        <a href="{% url 'project_detail_view' object.id %}">Cancel</a>
+    </form>
+{% endblock %}
