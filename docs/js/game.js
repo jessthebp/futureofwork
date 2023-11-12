@@ -76,7 +76,7 @@ function handleConsequences(consequences) {
 // Load game data from JSON (replace with your actual fetch logic)
 async function loadGameData() {
     try {
-        const response = await fetch("/futureOfWork/js/gameData.json");
+        const response = await fetch("/js/gameData.json");
         const data = await response.json();
         console.log(data)
         sequentialScenarios = data.sequentialScenarios; // Store the sequential scenarios
