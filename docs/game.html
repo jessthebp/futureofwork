@@ -22,11 +22,24 @@
         .choice-button:hover {
             background-color: #0056b3;
         }
+                .dark h1{
+            color: #e6e6e6;
+        }
+                .dark {
+            background-color: #222;
+            color: #cad5d0;
+
+                }
+                .dark .choice-button {
+            background-color: #cad5d0;
+            color: #222;
+
+                }
     </style>
 </head>
 <body>
 <h1> The Future of Work is Here!</h1>
-
+<p id="consequence"></p>
 <script src="js/game.js"></script>
 
 <div id="scoreboard">
@@ -35,6 +48,21 @@
   <p>Customer Satisfaction: <span id="customerSatisfactionDisplay"></span></p>
   <p>Stock Price: <span id="stockPriceDisplay"></span></p>
 </div>
+   <script>
+        // Function to toggle dark mode based on the query parameter
+        function toggleDarkMode() {
+            const queryParams = new URLSearchParams(window.location.search);
+            const theme = queryParams.get('theme');
 
+            if (theme === 'dark') {
+                document.body.classList.add('dark');
+            } else {
+                document.body.classList.remove('dark');
+            }
+        }
+
+        // Call the toggleDarkMode function when the page loads
+        window.addEventListener('DOMContentLoaded', toggleDarkMode);
+    </script>
 </body>
 </html>

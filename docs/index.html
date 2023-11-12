@@ -43,7 +43,7 @@
     <button id="start-button">Start Game</button>
 
     <!-- Add an iframe to load the game -->
-    <iframe id="game-iframe"></iframe>
+    <iframe src="game.html?theme=light" width="800" height="600" id="game-iframe"></iframe>
 
     <script>
         // Add JavaScript logic to load the game in the iframe when the button is clicked
@@ -61,10 +61,31 @@
             gameIframe.style.borderRadius = "10px";
 
             // Set the source (URL) of the iframe to your game page
-            gameIframe.src = "game.html"; // Replace "game.html" with your game's URL
+            gameIframe.src = "game.html?theme=light"; // Replace "game.html" with your game's URL
         });
     </script>
 
+    <button onclick="switchToLightMode()">Light Mode</button>
+    <button onclick="switchToDarkMode()">Dark Mode</button>
+
+
+    <script>
+        // Function to switch to light mode
+        function switchToLightMode() {
+            const iframe = document.querySelector('iframe');
+            iframe.src = 'game.html?theme=light';
+            // remove dark class from body
+            document.body.classList.remove('dark');
+        }
+
+        // Function to switch to dark mode
+        function switchToDarkMode() {
+            const iframe = document.querySelector('iframe');
+            iframe.src = 'game.html?theme=dark';
+            // add dark class to body
+            document.body.classList.add('dark');
+        }
+    </script>
 
 </body>
 </html>

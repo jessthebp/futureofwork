@@ -13,8 +13,40 @@ let companyData = {
 let sequentialScenarios; // Define the variable to store the game data
 let randomScenarios;
 let randomEvents;
+let previousConsequences;
 const scenarioHistory = [];
 const maxHistoryLength = 3; // Adjust this value as needed
+// Load game data from JSON (replace with your actual fetch logic)
+async function loadGameData() {
+    try {
+        const response = await fetch("js/gameData.json");
+        const data = await response.json();
+        console.log(data)
+        sequentialScenarios = data.sequentialScenarios; // Store the sequential scenarios
+        randomScenarios = data.randomScenarios;
+        events = data.events;
+
+        console.log(sequentialScenarios)
+        return data;
+    } catch (error) {
+        console.error("Error loading game data:", error);
+        return null;
+    }
+}
+
+// Call the loadGameData function to load the data
+loadGameData()
+    .then((gameData) => {
+        if (gameData) {
+            // The game data is loaded, you can now proceed with presenting scenarios
+            presentNextScenario();
+        } else {
+            // Handle errors if needed
+        }
+    })
+    .catch((error) => {
+        console.error("Error loading game data:", error);
+    });
 
 // Assuming companyData has properties for shareholderSatisfaction, customerSatisfaction, and stockPrice
 // You should initialize these in companyData object
@@ -58,6 +90,9 @@ function updateScoreDisplay() {
 // Call this function whenever you need to update the scores, for example after handling choices
 function handleConsequences(consequences) {
     // show the consequences text
+    previousConsequences = consequences;
+    console.log('handleconsequences function')
+    console.log(previousConsequences)
 
   if (consequences.stockPrice) {
     companyData.stockPrice += consequences.stockPrice;
@@ -73,37 +108,7 @@ function handleConsequences(consequences) {
 }
 
 
-// Load game data from JSON (replace with your actual fetch logic)
-async function loadGameData() {
-    try {
-        const response = await fetch("js/gameData.json");
-        const data = await response.json();
-        console.log(data)
-        sequentialScenarios = data.sequentialScenarios; // Store the sequential scenarios
-        randomScenarios = data.randomScenarios;
-        events = data.events;
 
-        console.log(sequentialScenarios)
-        return data;
-    } catch (error) {
-        console.error("Error loading game data:", error);
-        return null;
-    }
-}
-
-// Call the loadGameData function to load the data
-loadGameData()
-    .then((gameData) => {
-        if (gameData) {
-            // The game data is loaded, you can now proceed with presenting scenarios
-            presentNextScenario();
-        } else {
-            // Handle errors if needed
-        }
-    })
-    .catch((error) => {
-        console.error("Error loading game data:", error);
-    });
 
 let sequentialScenarioIndex = 0; // Initialize the index for sequential scenarios
 
@@ -385,9 +390,32 @@ function checkForEvents() {
 
 function displayChoiceScenario(scenario) {
     console.log('display choice scenario');
+    // if previousConsequences is undefined, ignore
+    console.log('find previous consequences in displaychoicescenario')
+    console.log(previousConsequences)
+                const consequencesContainer = document.getElementById('consequence')
+            // clear current consequences text
+  if (consequencesContainer.hasChildNodes()) {
+    // Remove all existing children nodes from the consequencesContainer
+    while (consequencesContainer.firstChild) {
+        consequencesContainer.removeChild(consequencesContainer.firstChild);
+    }
+}
+
+        if (previousConsequences && previousConsequences.text) {
+            console.log('creating follow up')
+
+        const previousConsequencesText = document.createElement("p");
+        previousConsequencesText.textContent = ` ${previousConsequences.text}`;
+        previousConsequencesText.style.color = 'grey';
+        console.log(previousConsequencesText)
+        consequencesContainer.appendChild(previousConsequencesText);
+    }
+
     // Format and display the narrative for the scenario
     const narrative = formatNarrative(scenario.narrative, companyData);
     gameText.innerHTML = `<p>${narrative}</p>`;
+
 
     const choiceButtons = document.createElement("div");
     scenario.choices.forEach(choice => {
