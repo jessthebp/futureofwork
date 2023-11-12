@@ -1,0 +1,2098 @@
+{
+    "sequentialScenarios": [
+        {
+            "id": "scenario1",
+            "narrative": "Welcome to your new company. What will you name it?",
+            "input": {
+                "type": "text",
+                "placeholder": "Enter Company Name",
+                "submitText": "Name the Company"
+            },
+            "choices": [],
+            "effect": {
+                "type": "update",
+                "target": "name",
+                "value": "name"
+            }
+        },
+        {
+            "id": "scenario2",
+            "narrative": "You've named your company {name}. Now, choose its type.",
+            "input": null,
+            "effect": {
+                "type": "update",
+                "target": "type",
+                "value": "type"
+            },
+            "choices": [
+                {
+                    "text": "Retail",
+                    "effect": {
+                        "type": "update",
+                        "target": "type",
+                        "value": "Retail"
+                    },
+                    "consequences": {
+                        "text": "You decided to focus on the retail industry.",
+                        "stockPrice": 0.95,
+                        "shareholderSatisfaction": 5,
+                        "customerSatisfaction": 3
+                    }
+                },
+                {
+                    "text": "Marketing",
+                    "effect": {
+                        "type": "update",
+                        "target": "type",
+                        "value": "Marketing"
+                    },
+                    "consequences": {
+                        "text": "You chose to specialize in marketing.",
+                        "stockPrice": 1.1,
+                        "shareholderSatisfaction": 2,
+                        "customerSatisfaction": 4
+                    }
+                },
+                {
+                    "text": "Finance",
+                    "effect": {
+                        "type": "update",
+                        "target": "type",
+                        "value": "Finance"
+                    },
+                    "consequences": {
+                        "text": "You decided to focus on finance.",
+                        "stockPrice": 1.05,
+                        "shareholderSatisfaction": 3,
+                        "customerSatisfaction": 2
+                    }
+                },
+                {
+                    "text": "Healthcare",
+                    "effect": {
+                        "type": "update",
+                        "target": "type",
+                        "value": "Healthcare"
+                    },
+                    "consequences": {
+                        "text": "You chose to specialize in healthcare.",
+                        "stockPrice": 1.1,
+                        "shareholderSatisfaction": 2,
+                        "customerSatisfaction": 4
+                    }
+                },
+                 {
+                    "text": "Education",
+                    "effect": {
+                        "type": "update",
+                        "target": "type",
+                        "value": "Education"
+                    },
+                    "consequences": {
+                        "text": "You chose to specialize in education.",
+                        "stockPrice": 1,
+                        "shareholderSatisfaction": 1,
+                        "customerSatisfaction": 3
+                    }
+                }
+                ]
+        },
+        {
+            "id": "scenario3",
+            "narrative": "It's 2023. The stockholders are clamoring: They want AI implemented, and they want it now. You face a critical decision. What do you do?",
+                           "effect": {
+                        "type": "update",
+                        "target": "aiImplementation",
+                        "value": "aiImplementation"
+                    },
+
+            "choices": [
+                {
+                    "text": "Implement AI (Hard)",
+                    "effect": {
+                        "type": "update",
+                        "target": "aiImplementation",
+                        "value": "Hard"
+                    },
+                    "consequences": {
+                        "text": "You decided to implement AI aggressively.",
+                        "stockPrice": 0.9,
+                        "shareholderSatisfaction": 4,
+                        "customerSatisfaction": 2
+                    }
+                },
+                {
+                    "text": "Implement AI (Soft)",
+                    "effect": {
+                        "type": "update",
+                        "target": "aiImplementation",
+                        "value": "Soft"
+                    },
+                    "consequences": {
+                        "text": "You chose to implement AI gradually. Stockholders are concerned you're losing a market edge.",
+                        "stockPrice": 1.05,
+                        "shareholderSatisfaction": 2,
+                        "customerSatisfaction": 3
+                    }
+                },
+                {
+                    "text": "Do Not Implement AI",
+                    "effect": {
+                        "type": "update",
+                        "target": "aiImplementation",
+                        "value": "contested"
+                    },
+                    "consequences": {
+                        "text": "You decided not to implement AI. Your COO overrides your decision and implements AI anyway.",
+                        "stockPrice": 0.8,
+                        "shareholderSatisfaction": -5,
+                        "customerSatisfaction": 1
+                    }
+                }
+            ]
+        },
+               {
+              "id": "randomAIImplementer",
+              "narrative": "You've decided to implement AI in your company.  Now, choose the company that will implement the AI solution(s).",
+              "choices": [
+                {
+                  "text": "Choose AI Implementer",
+                  "effect": {
+                    "type": "randomAIImplementer",
+                    "target": "aiImplementer"
+                  }
+                }
+              ]
+            },
+        {
+            "id": "gamescenariostart",
+            "narrative": "Your company, {name} in the {type} industry has decided to implement AI. You've chosen {aiImplementer} to implement the AI solution. <br><br> Make sure your stock stays high and everybody stays happy: if your stock price drops below .1 or people get too unhappy, it could spell the end for you (and your business!).",
+            "choices": [
+                {
+                    "text": "Begin Game",
+                    "effect": {
+                        "type": "update",
+                        "target": "gameState",
+                        "value": "game"
+                    }
+                }
+            ]
+        }
+
+],
+    "randomScenarios": [
+        {
+            "id": "scenario5",
+            "narrative": "You're being asked to lay off a workforce and replace them with AI. What do you choose?",
+            "condition": {
+                "target": "type",
+                "value": "Healthcare"
+            },
+            "choices": [
+                {
+                    "text": "Replace Doctors",
+                    "effect": {
+                        "type": "update",
+                        "target": "workforce.doctors",
+                        "value": "AI"
+                    },
+                    "consequences": {
+                        "text": "You decided to replace doctors with AI.",
+                        "stockPrice": -0.2,
+                        "shareholderSatisfaction": -3,
+                        "customerSatisfaction": -4
+                    }
+                },
+                {
+                    "text": "Replace Nurses",
+                    "effect": {
+                        "type": "update",
+                        "target": "workforce.nurses",
+                        "value": "AI"
+                    },
+                    "consequences": {
+                        "text": "You chose to replace nurses with AI.",
+                        "stockPrice": -0.15,
+                        "shareholderSatisfaction": -2,
+                        "customerSatisfaction": -3
+                    }
+                },
+                {
+                    "text": "Replace Receptionists",
+                    "effect": {
+                        "type": "update",
+                        "target": "workforce.receptionists",
+                        "value": "AI"
+                    },
+                    "consequences": {
+                        "text": "You decided to replace receptionists with AI.",
+                        "stockPrice": -0.1,
+                        "shareholderSatisfaction": -1,
+                        "customerSatisfaction": -2
+                    }
+                },
+                {
+                    "text": "Replace Admin Staff",
+                    "effect": {
+                        "type": "update",
+                        "target": "workforce.adminStaff",
+                        "value": "AI"
+                    },
+                    "consequences": {
+                        "text": "You chose to replace admin staff with AI.",
+                        "stockPrice": -0.1,
+                        "shareholderSatisfaction": -1,
+                        "customerSatisfaction": -2
+                    }
+                }
+            ]
+        },
+        {
+            "id": "scenario6",
+            "narrative": "You're being asked to lay off a workforce and replace them with AI. What do you choose?",
+            "condition": {
+                "target": "type",
+                "value": "Retail"
+            },
+            "choices": [
+                {
+                    "text": "Replace Cashiers",
+                    "effect": {
+                        "type": "update",
+                        "target": "workforce.cashiers",
+                        "value": "AI"
+                    },
+                    "consequences": {
+                        "text": "You decided to replace cashiers with AI.",
+                        "stockPrice": -0.2,
+                        "shareholderSatisfaction": -3,
+                        "customerSatisfaction": -4
+                    }
+                },
+                {
+                    "text": "Replace Stockers",
+                    "effect": {
+                        "type": "update",
+                        "target": "workforce.stockers",
+                        "value": "AI"
+                    },
+                    "consequences": {
+                        "text": "You chose to replace stockers with AI.",
+                        "stockPrice": -0.15,
+                        "shareholderSatisfaction": -2,
+                        "customerSatisfaction": -3
+                    }
+                },
+                {
+                    "text": "Replace Managers",
+                    "effect": {
+                        "type": "update",
+                        "target": "workforce.managers",
+                        "value": "AI"
+                    },
+                    "consequences": {
+                        "text": "You decided to replace managers with AI.",
+                        "stockPrice": -0.1,
+                        "shareholderSatisfaction": -1,
+                        "customerSatisfaction": -2
+                    }
+                }
+            ]
+        },
+      {
+    "id": "scenario_marketing_layoff",
+    "narrative": "To streamline operations and reduce costs, there's a proposal to replace a portion of your marketing team with an AI system that can analyze trends and automate campaigns. How do you proceed?",
+    "condition": {
+        "target": "type",
+        "value": "Marketing"
+    },
+    "choices": [
+        {
+            "text": "Replace Creative Directors",
+            "effect": {
+                "type": "update",
+                "target": "workforce.creativeDirectors",
+                "value": "AI"
+            },
+            "consequences": {
+                "text": "You've decided to replace Creative Directors with AI, hoping for fresh, data-driven creative campaigns.",
+                "stockPrice": 0.05,
+                "shareholderSatisfaction": 2,
+                "customerSatisfaction": -2
+            }
+        },
+        {
+            "text": "Replace Marketers",
+            "effect": {
+                "type": "update",
+                "target": "workforce.marketers",
+                "value": "AI"
+            },
+                "triggerEvent": {
+        "event": "event_analysts_replaced",
+        "roundsAfter": 7
+      },
+            "consequences": {
+                "text": "You've opted to replace Marketers with AI, hoping for more efficient campaigns.",
+                "stockPrice": 0.03,
+                "shareholderSatisfaction": 1,
+                "customerSatisfaction": -1
+            }
+        },
+        {
+            "text": "Replace Content Creators",
+            "effect": {
+                "type": "update",
+                "target": "workforce.contentCreators",
+                "value": "AI"
+            },
+            "consequences": {
+                "text": "You decide to let AI take over content creation, expecting a rapid output of SEO-driven articles and posts.",
+                "stockPrice": -0.05,
+                "shareholderSatisfaction": -1,
+                "customerSatisfaction": -3
+            }
+        },
+        {
+            "text": "Do Not Implement AI",
+            "effect": {
+                "type": "update",
+                "target": "workforce.noChange",
+                "value": "Human"
+            },
+            "consequences": {
+                "text": "You choose to keep the marketing team human-based, valuing creative human insight over AI efficiency.",
+                "stockPrice": -0.02,
+                "shareholderSatisfaction": -2,
+                "customerSatisfaction": 2
+            }
+        }
+    ]
+},
+
+            {
+      "id": "scenario14",
+      "narrative": "Student post-course feedback is increasingly negative, suggesting a need for improvement. There's a proposal to use AI to analyze feedback and enhance teaching methods, but there are concerns about inherent biases in the feedback. How do you proceed?",
+      "condition": {
+        "target": "type",
+        "value": "Education"
+      },
+      "choices": [
+        {
+          "text": "Implement AI Analysis",
+          "effect": {
+            "type": "update",
+            "target": "teachingMethods",
+            "value": "AIAnalysis"
+          },
+          "consequences": {
+            "text": "You choose to implement AI to analyze feedback, risking potential backlash over bias.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": -3
+          }
+        },
+        {
+          "text": "Review Feedback Manually",
+          "effect": {
+            "type": "update",
+            "target": "feedbackProcessing",
+            "value": "ManualReview"
+          },
+          "consequences": {
+            "text": "You opt for manual review of feedback to ensure nuance and fairness.",
+            "stockPrice": -0.05,
+            "shareholderSatisfaction": -1,
+            "customerSatisfaction": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario15",
+      "narrative": "There's a push to have AI take over grading to streamline education. However, this could lead to a wider achievement gap and less support for struggling students. Do you support the transition to AI grading?",
+      "condition": {
+        "target": "type",
+        "value": "Education"
+      },
+      "choices": [
+        {
+          "text": "Adopt AI Grading",
+          "effect": {
+            "type": "update",
+            "target": "gradingSystem",
+            "value": "AIAdoption"
+          },
+          "consequences": {
+            "text": "You adopt AI grading, causing concerns about neglecting students who need help.",
+            "stockPrice": 0.05,
+            "shareholderSatisfaction": 3,
+            "customerSatisfaction": -5
+          }
+        },
+        {
+          "text": "Retain Human Grading",
+          "effect": {
+            "type": "update",
+            "target": "gradingSystem",
+            "value": "HumanRetention"
+          },
+          "consequences": {
+            "text": "You decide to retain human grading, preserving individualized attention at higher costs.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": -2,
+            "customerSatisfaction": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario16",
+      "narrative": "A proposal suggests using AI tutors to allow for larger classroom sizes and fewer teachers. This could lead to savings but may also result in a less socialized and more chaotic learning environment. How do you respond?",
+      "condition": {
+        "target": "type",
+        "value": "Education"
+      },
+      "choices": [
+        {
+          "text": "Increase Classroom Sizes",
+          "effect": {
+            "type": "update",
+            "target": "classroomManagement",
+            "value": "SizeIncrease"
+          },
+          "consequences": {
+            "text": "You decide to increase classroom sizes, leveraging AI at the expense of classroom dynamics.",
+            "stockPrice": 0.1,
+            "shareholderSatisfaction": 4,
+            "customerSatisfaction": -4
+          }
+        },
+        {
+          "text": "Maintain Current Sizes",
+          "effect": {
+            "type": "update",
+            "target": "classroomManagement",
+            "value": "SizeMaintenance"
+          },
+          "consequences": {
+            "text": "You maintain current classroom sizes to preserve quality of education, incurring higher costs.",
+            "stockPrice": -0.15,
+            "shareholderSatisfaction": -3,
+            "customerSatisfaction": 5
+          }
+        }
+      ]
+    },
+            {
+      "id": "scenario7",
+      "narrative": "AI is found to be biased against Irish patients. How do you address this issue?",
+      "condition": {
+        "target": "type",
+        "value": "Healthcare"
+      },
+      "choices": [
+        {
+          "text": "Audit and Update AI",
+          "effect": {
+            "type": "update",
+            "target": "aiEthics",
+            "value": "Audit"
+          },
+          "consequences": {
+            "text": "You chose to audit and update the AI algorithms.",
+            "stockPrice": -0.05,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": 5
+          }
+        },
+        {
+          "text": "Public Apology",
+          "effect": {
+            "type": "update",
+            "target": "publicRelations",
+            "value": "Apology"
+          },
+          "consequences": {
+            "text": "You issued a public apology and promised corrective measures.",
+            "stockPrice": -0.03,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario8",
+      "narrative": "Your AI company has violated HIPAA. What immediate action do you take?",
+      "condition": {
+        "target": "type",
+        "value": "Healthcare"
+      },
+      "choices": [
+        {
+          "text": "Settle and Reform",
+          "effect": {
+            "type": "update",
+            "target": "legalStatus",
+            "value": "Settle"
+          },
+          "consequences": {
+            "text": "You chose to settle the lawsuits and reform your data policies.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": -2,
+            "customerSatisfaction": 2
+          }
+        },
+        {
+          "text": "Fight in Court",
+          "effect": {
+            "type": "update",
+            "target": "legalStatus",
+            "value": "Fight"
+          },
+          "consequences": {
+            "text": "You decided to fight the allegations in court.",
+            "stockPrice": -0.15,
+            "shareholderSatisfaction": -3,
+            "customerSatisfaction": -5
+          }
+        }
+      ]
+    },
+
+    {
+      "id": "scenario9",
+      "narrative": "A group of Reddit users are influencing your AI to make bad investment choices. How do you respond?",
+      "condition": {
+        "target": "type",
+        "value": "Finance"
+      },
+      "choices": [
+        {
+          "text": "Cut Off Internet Access",
+          "effect": {
+            "type": "update",
+            "target": "aiSecurity",
+            "value": "Isolate"
+          },
+          "consequences": {
+            "text": "You chose to cut off internet access to secure your AI.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": -2
+          }
+        },
+        {
+          "text": "Lean Into the Chaos",
+          "effect": {
+            "type": "update",
+            "target": "investmentStrategy",
+            "value": "Adapt"
+          },
+          "consequences": {
+            "text": "You decide to adapt and use the situation to your advantage.",
+            "stockPrice": 0.2,
+            "shareholderSatisfaction": 4,
+            "customerSatisfaction": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario10",
+      "narrative": "All your AI systems chose to sell stocks at once, causing a market crash. What's your move?",
+      "condition": {
+        "target": "type",
+        "value": "Finance"
+      },
+      "choices": [
+        {
+          "text": "Halt Trading",
+          "effect": {
+            "type": "update",
+            "target": "marketImpact",
+            "value": "Halt"
+          },
+          "consequences": {
+            "text": "You chose to halt all trading to prevent further damage.",
+            "stockPrice": -0.3,
+            "shareholderSatisfaction": -4,
+            "customerSatisfaction": -5
+          }
+        },
+        {
+          "text": "Buy Back Stocks",
+          "effect": {
+            "type": "update",
+            "target": "stockManagement",
+            "value": "Buyback"
+          },
+          "consequences": {
+            "text": "You decide to buy back stocks to stabilize the market.",
+            "stockPrice": 0.1,
+            "shareholderSatisfaction": 3,
+            "customerSatisfaction": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario11",
+      "narrative": "Your marketing materials feature people with 7 fingers per hand, causing public backlash. How do you handle it?",
+      "condition": {
+        "target": "type",
+        "value": "Marketing"
+      },
+      "choices": [
+        {
+          "text": "Redesign Campaign",
+          "effect": {
+            "type": "update",
+            "target": "campaignQuality",
+            "value": "Redesign"
+          },
+          "consequences": {
+            "text": "You chose to redesign the marketing campaign.",
+            "stockPrice": -0.05,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": 2
+          }
+        },
+        {
+          "text": "Promote as Artistic Choice",
+          "effect": {
+            "type": "update",
+            "target": "publicRelations",
+            "value": "Spin"
+          },
+          "consequences": {
+            "text": "You promote the design as an artistic choice.",
+            "stockPrice": 0.02,
+            "shareholderSatisfaction": -1,
+            "customerSatisfaction": -2
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario12",
+      "narrative": "Your content accidentally promotes a rival brand. What corrective action do you take?",
+      "condition": {
+        "target": "type",
+        "value": "Marketing"
+      },
+      "choices": [
+        {
+          "text": "Issue Correction",
+          "effect": {
+            "type": "update",
+            "target": "brandIntegrity",
+            "value": "Correction"
+          },
+          "consequences": {
+            "text": "You issue a correction and apologize.",
+            "stockPrice": -0.03,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": 3
+          }
+        },
+        {
+          "text": "Launch New Campaign",
+          "effect": {
+            "type": "update",
+            "target": "marketingEfforts",
+            "value": "NewCampaign"
+          },
+          "consequences": {
+            "text": "You launch a new campaign to overshadow the mistake.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario13",
+      "narrative": "The AI orders 3 million paperclips due to a misinterpretation of 'Paperclip Week'. How do you solve this inventory issue?",
+      "condition": {
+        "target": "type",
+        "value": "Retail"
+      },
+      "choices": [
+        {
+          "text": "Hold a Sale",
+          "effect": {
+            "type": "update",
+            "target": "salesStrategy",
+            "value": "Discount"
+          },
+          "consequences": {
+            "text": "You hold a massive sale to reduce excess inventory.",
+            "stockPrice": 0.1,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": 5
+          }
+        },
+        {
+          "text": "Return Inventory",
+          "effect": {
+            "type": "update",
+            "target": "inventoryManagement",
+            "value": "Return"
+          },
+          "consequences": {
+            "text": "You negotiate a return of excess inventory to the supplier.",
+            "stockPrice": -0.05,
+            "shareholderSatisfaction": -2,
+            "customerSatisfaction": -1
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario17",
+      "narrative": "The AI implementer company you've partnered with is bought by a foreign government. There are concerns about data privacy and national security. What do you do?",
+      "choices": [
+        {
+          "text": "End Partnership",
+          "effect": {
+            "type": "update",
+            "target": "partnershipStatus",
+            "value": "Terminated"
+          },
+          "consequences": {
+            "text": "You decided to end the partnership, prioritizing data privacy and security.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": 3
+          }
+        },
+        {
+          "text": "Continue Partnership",
+          "effect": {
+            "type": "update",
+            "target": "partnershipStatus",
+            "value": "Continued"
+          },
+          "consequences": {
+            "text": "You chose to continue the partnership, risking public trust but maintaining AI capabilities.",
+            "stockPrice": 0.05,
+            "shareholderSatisfaction": -2,
+            "customerSatisfaction": -3
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario18",
+      "narrative": "There's been a data leak at your AI implementer, compromising sensitive customer information. How do you handle the fallout?",
+      "choices": [
+        {
+          "text": "Publicly Address the Issue",
+          "effect": {
+            "type": "update",
+            "target": "publicRelations",
+            "value": "Addressed"
+          },
+          "consequences": {
+            "text": "You address the issue publicly, taking responsibility and promising remedies.",
+            "stockPrice": -0.2,
+            "shareholderSatisfaction": -1,
+            "customerSatisfaction": 4
+          }
+        },
+        {
+          "text": "Downplay the Incident",
+          "effect": {
+            "type": "update",
+            "target": "publicRelations",
+            "value": "Downplayed"
+          },
+          "consequences": {
+            "text": "You attempt to downplay the incident, which may backfire if not managed carefully.",
+            "stockPrice": -0.05,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": -5
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario19",
+      "narrative": "The AI implementer has significantly increased their prices, putting a strain on your operating budget. Your move?",
+      "choices": [
+        {
+          "text": "Negotiate for Better Rates",
+          "effect": {
+            "type": "update",
+            "target": "financialNegotiations",
+            "value": "Negotiated"
+          },
+          "consequences": {
+            "text": "You enter into tough negotiations to lower the rates.",
+            "stockPrice": -0.05,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": 1
+          }
+        },
+        {
+          "text": "Seek Alternative Providers",
+          "effect": {
+            "type": "update",
+            "target": "vendorManagement",
+            "value": "AlternativesSought"
+          },
+          "consequences": {
+            "text": "You seek alternative AI providers to maintain budget control.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": 3,
+            "customerSatisfaction": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario20",
+      "narrative": "A board member expresses deep concern that the AI might become sentient. This causes a stir among shareholders. How do you reassure them?",
+      "choices": [
+        {
+          "text": "Hold an AI Ethics Workshop",
+          "effect": {
+            "type": "update",
+            "target": "aiEthicsInitiative",
+            "value": "WorkshopHeld"
+          },
+          "consequences": {
+            "text": "You organize a workshop to discuss AI ethics and safety measures.",
+            "stockPrice": -0.02,
+            "shareholderSatisfaction": 4,
+            "customerSatisfaction": 2
+          }
+        },
+        {
+          "text": "Commission an Independent Audit",
+          "effect": {
+            "type": "update",
+            "target": "aiSafetyAudit",
+            "value": "AuditCommissioned"
+          },
+          "consequences": {
+            "text": "You commission an independent audit to assess AI sentience risks.",
+            "stockPrice": -0.05,
+            "shareholderSatisfaction": 3,
+            "customerSatisfaction": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario21",
+      "narrative": "A major paper publishes an unflattering editorial about your use of AI, calling it 'reckless'. Do you respond?",
+      "choices": [
+        {
+          "text": "Write a Rebuttal",
+          "effect": {
+            "type": "update",
+            "target": "mediaResponse",
+            "value": "RebuttalWritten"
+          },
+          "consequences": {
+            "text": "You write a strong rebuttal defending your company's AI practices.",
+            "stockPrice": 0.03,
+            "shareholderSatisfaction": -1,
+            "customerSatisfaction": 3
+          }
+        },
+        {
+          "text": "Invite the Editor for a Discussion",
+          "effect": {
+            "type": "update",
+            "target": "publicEngagement",
+            "value": "DiscussionHeld"
+          },
+          "consequences": {
+            "text": "You invite the editor for a public discussion to address concerns.",
+            "stockPrice": 0.01,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario22",
+      "narrative": "Your automated restocking robot has malfunctioned, causing injuries to three customers and a worker. A lawsuit seems imminent. How do you address this crisis?",
+      "condition": {
+        "target": "type",
+        "value": "Retail"
+      },
+      "choices": [
+        {
+          "text": "Settle and Improve Safety",
+          "effect": {
+            "type": "update",
+            "target": "legalStrategy",
+            "value": "Settle"
+          },
+          "consequences": {
+            "text": "You choose to settle with the victims and invest in safety improvements for the robots.",
+            "stockPrice": -0.3,
+            "shareholderSatisfaction": -4,
+            "customerSatisfaction": 2
+          }
+        },
+        {
+          "text": "Defend in Court",
+          "effect": {
+            "type": "update",
+            "target": "legalStrategy",
+            "value": "Defend"
+          },
+          "consequences": {
+            "text": "You decide to defend your company in court, denying liability for the robot's actions.",
+            "stockPrice": -0.2,
+            "shareholderSatisfaction": -2,
+            "customerSatisfaction": -5
+          }
+        },
+        {
+          "text": "Publicity Stunt: Robot on Stand",
+          "effect": {
+            "type": "update",
+            "target": "publicRelations",
+            "value": "Stunt"
+          },
+          "consequences": {
+            "text": "You turn the lawsuit into a publicity stunt by putting the robot on the stand, drawing media attention.",
+            "stockPrice": 0.1,
+            "shareholderSatisfaction": 3,
+            "customerSatisfaction": -3
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario23",
+      "narrative": "An update to your AI pricing system causes widespread pricing errors, leading to customers being overcharged. The error has gone viral on social media. How do you manage the situation?",
+      "condition": {
+        "target": "type",
+        "value": "Retail"
+      },
+      "choices": [
+        {
+          "text": "Issue Refunds and Apologize",
+          "effect": {
+            "type": "update",
+            "target": "customerService",
+            "value": "Refund"
+          },
+          "consequences": {
+            "text": "You issue refunds to the affected customers and issue a public apology.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": 0,
+            "customerSatisfaction": 5
+          }
+        },
+        {
+          "text": "Blame AI Vendor",
+          "effect": {
+            "type": "update",
+            "target": "vendorRelations",
+            "value": "Blame"
+          },
+          "consequences": {
+            "text": "You shift the blame to the AI vendor, risking your relationship with them.",
+            "stockPrice": 0,
+            "shareholderSatisfaction": -2,
+            "customerSatisfaction": -2
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario24",
+      "narrative": "Your AI-driven security system falsely accuses a loyal customer of shoplifting, leading to a humiliating public incident. The customer threatens to sue for defamation. Your action?",
+      "condition": {
+        "target": "type",
+        "value": "Retail"
+      },
+      "choices": [
+        {
+          "text": "Compensate and Retrain AI",
+          "effect": {
+            "type": "update",
+            "target": "securityProtocols",
+            "value": "Retrain"
+          },
+          "consequences": {
+            "text": "You offer compensation to the customer and take measures to retrain the AI system.",
+            "stockPrice": -0.05,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": 4
+          }
+        },
+        {
+          "text": "Contest the Lawsuit",
+          "effect": {
+            "type": "update",
+            "target": "legalStrategy",
+            "value": "Contest"
+          },
+          "consequences": {
+            "text": "You decide to contest the lawsuit, standing by your security system's decision.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": -3,
+            "customerSatisfaction": -5
+          }
+        }
+      ]
+    },
+ {
+      "id": "scenario25",
+      "narrative": "A Title IX complaint has been filed indicating that the AI used in hiring discriminates against female applicants. How do you respond?",
+      "condition": {
+        "target": "type",
+        "value": "Retail"
+      },
+      "choices": [
+        {
+          "text": "Conduct an Internal Review",
+          "effect": {
+            "type": "update",
+            "target": "complianceStatus",
+            "value": "InternalReview"
+          },
+          "consequences": {
+            "text": "You initiate an internal review of the AI algorithms and hiring practices.",
+            "stockPrice": -0.05,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": 2
+          }
+        },
+        {
+          "text": "Suspend AI Hiring Tool",
+          "effect": {
+            "type": "update",
+            "target": "hiringProcess",
+            "value": "SuspendAI"
+          },
+          "consequences": {
+            "text": "You temporarily suspend the AI hiring tool pending a thorough investigation.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": -1,
+            "customerSatisfaction": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario26",
+      "narrative": "Customers have lodged complaints that the AI customer service chatbot manifests racial biases. How do you address these concerns?",
+      "condition": {
+        "target": "type",
+        "value": "Retail"
+      },
+      "choices": [
+        {
+          "text": "Publicly Apologize and Retrain AI",
+          "effect": {
+            "type": "update",
+            "target": "publicRelations",
+            "value": "ApologizeRetrain"
+          },
+          "consequences": {
+            "text": "You publicly apologize and commit to retraining the AI to remove biases.",
+            "stockPrice": -0.08,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": 4
+          }
+        },
+        {
+          "text": "Ignore Complaints",
+          "effect": {
+            "type": "update",
+            "target": "publicRelations",
+            "value": "Ignore"
+          },
+          "consequences": {
+            "text": "You choose to ignore the complaints, risking a public relations backlash.",
+            "stockPrice": -0.15,
+            "shareholderSatisfaction": -4,
+            "customerSatisfaction": -6
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario27",
+      "narrative": "The company is implementing DEI training, but some employees are resistant, claiming the AI-driven program is 'too political'. How do you proceed?",
+      "condition": {
+        "target": "type",
+        "value": "Retail"
+      },
+      "choices": [
+        {
+          "text": "Mandate Training",
+          "effect": {
+            "type": "update",
+            "target": "employeeDevelopment",
+            "value": "MandatoryTraining"
+          },
+          "consequences": {
+            "text": "You mandate DEI training for all employees to foster an inclusive workplace.",
+            "stockPrice": -0.03,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": 2
+          }
+        },
+        {
+          "text": "Revise Training Material",
+          "effect": {
+            "type": "update",
+            "target": "employeeDevelopment",
+            "value": "ReviseMaterial"
+          },
+          "consequences": {
+            "text": "You decide to revise the training material to address concerns and improve acceptance.",
+            "stockPrice": -0.02,
+            "shareholderSatisfaction": 0,
+            "customerSatisfaction": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario28",
+      "narrative": "An employee has been seriously injured by malfunctioning AI equipment on the shop floor. The media has caught wind of the incident. What's your response?",
+      "condition": {
+        "target": "type",
+        "value": "Retail"
+      },
+      "choices": [
+        {
+          "text": "Compensate and Support the Employee",
+          "effect": {
+            "type": "update",
+            "target": "workplaceSafety",
+            "value": "SupportInjured"
+          },
+          "consequences": {
+            "text": "You offer full compensation and support to the injured employee and promise to improve workplace safety.",
+            "stockPrice": -0.2,
+            "shareholderSatisfaction": -2,
+            "customerSatisfaction": 5
+          }
+        },
+        {
+          "text": "Minimize the Incident",
+          "effect": {
+            "type": "update",
+            "target": "publicRelations",
+            "value": "Minimize"
+          },
+          "consequences": {
+            "text": "You attempt to minimize the incident's impact, focusing on the rarity of such accidents.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": -3
+          }
+        }
+      ]
+    },
+  {
+      "id": "scenario29",
+      "narrative": "Your company's AI-powered resume filter has been inadvertently rejecting applicants who attended colleges with 'E' in the name. This oversight has just come to light. How do you rectify the situation?",
+      "condition": {
+        "target": "type",
+        "value": "Retail"
+      },
+      "choices": [
+        {
+          "text": "Public Apology and Manual Review",
+          "effect": {
+            "type": "update",
+            "target": "recruitmentPolicy",
+            "value": "ReviseFilter"
+          },
+          "consequences": {
+            "text": "You issue a public apology and commit to a manual review of all affected applications.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": -1,
+            "customerSatisfaction": 3
+          }
+        },
+        {
+          "text": "Quietly Update the Filter",
+          "effect": {
+            "type": "update",
+            "target": "recruitmentPolicy",
+            "value": "QuietUpdate"
+          },
+          "consequences": {
+            "text": "You discreetly update the filter and reprocess recent applications without public acknowledgment.",
+            "stockPrice": -0.05,
+            "shareholderSatisfaction": 0,
+            "customerSatisfaction": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario30",
+      "narrative": "Reports have surfaced that your AI customer support can be prompted to use racial slurs and pornographic content. The media is starting to take notice. What's your course of action?",
+
+      "choices": [
+        {
+          "text": "Immediate Shutdown and Investigation",
+          "effect": {
+            "type": "update",
+            "target": "customerService",
+            "value": "ShutdownInvestigate"
+          },
+          "consequences": {
+            "text": "You immediately shut down the AI system and launch an investigation.",
+            "stockPrice": -0.2,
+            "shareholderSatisfaction": -3,
+            "customerSatisfaction": 4
+          }
+        },
+        {
+          "text": "Issue a Statement and Patch AI",
+          "effect": {
+            "type": "update",
+            "target": "customerService",
+            "value": "IssueStatement"
+          },
+          "consequences": {
+            "text": "You issue a statement condemning the abuse and patch the AI to prevent such prompts.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": -1,
+            "customerSatisfaction": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario31",
+      "narrative": "The AI-generated images for your customer support agents are consistently showing women in provocative attire. There is growing discomfort among the staff and customers. How do you handle this?",
+      "condition": {
+        "target": "type",
+        "value": "Retail"
+      },
+      "choices": [
+        {
+          "text": "Redesign the Image Generator",
+          "effect": {
+            "type": "update",
+            "target": "aiImagery",
+            "value": "RedesignGenerator"
+          },
+          "consequences": {
+            "text": "You commit to a complete overhaul of the image generation system to ensure appropriate attire.",
+            "stockPrice": -0.05,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": 3
+          }
+        },
+        {
+          "text": "Use Real Agent Photos",
+          "effect": {
+            "type": "update",
+            "target": "aiImagery",
+            "value": "UseRealPhotos"
+          },
+          "consequences": {
+            "text": "You switch to using real photos of agents to represent customer support.",
+            "stockPrice": 0.02,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": 5
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario32",
+      "narrative": "Your AI customer support agent is being criticized for being 'too woke', with complaints that it's prioritizing political correctness over helpful responses. What strategy do you adopt?",
+      "condition": {
+        "target": "type",
+        "value": "Retail"
+      },
+      "choices": [
+        {
+          "text": "Reprogram AI to Neutral Stance",
+          "effect": {
+            "type": "update",
+            "target": "aiTone",
+            "value": "NeutralStance"
+          },
+          "consequences": {
+            "text": "You reprogram the AI to adopt a more neutral stance on sensitive topics.",
+            "stockPrice": -0.05,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": -1
+          }
+        },
+        {
+          "text": "Defend Company Values",
+          "effect": {
+            "type": "update",
+            "target": "companyValues",
+            "value": "DefendValues"
+          },
+          "consequences": {
+            "text": "You stand by the AI's responses, defending the company's commitment to social issues.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": -2,
+            "customerSatisfaction": 2
+          }
+        }
+      ]
+    },
+   {
+      "id": "scenario38",
+      "narrative": "The AI system for diagnosing diseases has a lower accuracy for a rare condition, leading to misdiagnoses. Do you shut down the system for upgrades or keep it running while developing a patch?",
+           "condition": {
+        "target": "type",
+        "value": "Healthcare"
+      },
+
+     "choices": [
+        {
+          "text": "Shut Down for Upgrades",
+          "consequences": {
+            "text": "You decide to shut down the AI system temporarily to perform critical upgrades.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": -2,
+            "customerSatisfaction": 4
+          }
+        },
+        {
+          "text": "Keep Running with Development",
+          "consequences": {
+            "text": "You keep the AI system running while a patch is being developed.",
+            "stockPrice": 0.05,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": -3
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario39",
+      "narrative": "During a critical surgery, the AI-assisted robotic arm experiences technical difficulties. Do you halt all AI-assisted surgeries for a review or address only the specific issue?",
+            "condition": {
+        "target": "type",
+        "value": "Healthcare"
+      },
+
+      "choices": [
+        {
+          "text": "Halt All Surgeries",
+          "consequences": {
+            "text": "You decide to halt all AI-assisted surgeries until a comprehensive review is conducted.",
+            "stockPrice": -0.2,
+            "shareholderSatisfaction": -4,
+            "customerSatisfaction": 3
+          }
+        },
+        {
+          "text": "Address Specific Issue",
+          "consequences": {
+            "text": "You choose to address the specific issue without halting all surgeries.",
+            "stockPrice": 0,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": -2
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario40",
+      "narrative": "A breach exposes patient data analyzed by your AI. Do you offer compensation to affected individuals or invest heavily in cybersecurity to prevent future incidents?",
+            "condition": {
+        "target": "type",
+        "value": "Marketing"
+      },
+
+      "choices": [
+        {
+          "text": "Offer Compensation",
+          "consequences": {
+            "text": "You offer compensation to the individuals affected by the data breach.",
+            "stockPrice": -0.15,
+            "shareholderSatisfaction": -3,
+            "customerSatisfaction": 5
+          }
+        },
+        {
+          "text": "Invest in Cybersecurity",
+          "consequences": {
+            "text": "You invest heavily in cybersecurity measures to prevent future breaches.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": 3
+          }
+        },
+        {
+          "text": "Deny all wrongdoing",
+          "consequences": {
+            "text": "You deny any knowledge of the data leak. At least your stockholders are happy?",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": -2
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario41",
+      "narrative": "AI-powered patient monitoring has alerted to false emergencies, causing staff panic and patient anxiety. Do you disable AI alerts until the system is fixed or continue to use it with manual verifications?",
+                  "condition": {
+        "target": "type",
+        "value": "Healthcare"
+      },
+
+      "choices": [
+        {
+          "text": "Disable AI Alerts",
+          "consequences": {
+            "text": "You choose to disable AI alerts temporarily, relying on manual monitoring.",
+            "stockPrice": -0.05,
+            "shareholderSatisfaction": -1,
+            "customerSatisfaction": 2
+          }
+        },
+        {
+          "text": "Continue with Verifications",
+          "consequences": {
+            "text": "You continue using AI alerts but add a layer of manual verification.",
+            "stockPrice": 0.02,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": -1
+          }
+        }
+      ]
+    }, {
+      "id": "scenario43",
+                    "condition": {
+        "target": "type",
+        "value": "Finance"
+      },
+      "narrative": "Your trading AI is accused of using non-public information for trades. Do you suspend AI trading to investigate or assert the AI's innocence and keep it active?",
+      "choices": [
+        {
+          "text": "Suspend AI Trading",
+          "consequences": {
+            "text": "You decide to suspend AI trading to conduct an internal investigation.",
+            "stockPrice": -0.2,
+            "shareholderSatisfaction": -3,
+            "customerSatisfaction": 5
+          }
+        },
+        {
+          "text": "Keep AI Active",
+          "consequences": {
+            "text": "You keep the AI trading system active, insisting on its programmed integrity.",
+            "stockPrice": 0.1,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": -4
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario44",
+      "narrative": "Your AI-driven debt collection system is overly aggressive, leading to complaints of harassment. Do you pull back the AI's autonomy or provide better AI customer negotiation training?",
+                  "condition": {
+        "target": "type",
+        "value": "Finance"
+      },
+
+      "choices": [
+        {
+          "text": "Reduce AI Autonomy",
+          "consequences": {
+            "text": "You reduce the AI's autonomy in debt collection to minimize harassment complaints.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": 3
+          }
+        },
+        {
+          "text": "Enhance AI Training",
+          "consequences": {
+            "text": "You invest in better AI training to improve negotiation tactics without harassment.",
+            "stockPrice": -0.05,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario45",
+      "narrative": "Your AI system for credit scoring is found to disadvantage certain demographic groups. Do you overhaul the AI credit model or offer manual reviews for anyone who contests their score?",
+                    "condition": {
+            "target": "type",
+            "value": "Finance"
+        },
+
+      "choices": [
+        {
+          "text": "Overhaul AI Model",
+          "consequences": {
+            "text": "You decide to overhaul the entire AI credit scoring model to remove biases.",
+            "stockPrice": -0.3,
+            "shareholderSatisfaction": -2,
+            "customerSatisfaction": 5
+          }
+        },
+        {
+          "text": "Offer Manual Reviews",
+          "consequences": {
+            "text": "You offer manual reviews of credit scores for those who believe they have been unfairly scored.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario46",
+                  "condition": {
+        "target": "type",
+        "value": "Finance"
+      },
+      "narrative": "During a market dip, your AI investment advisor erroneously suggests clients pull out, causing a panic. Do you publicly correct the AI's advice or quietly adjust client portfolios?",
+      "choices": [
+        {
+          "text": "Public Correction",
+          "consequences": {
+            "text": "You make a public correction of the AI's advice to prevent a market panic.",
+            "stockPrice": -0.2,
+            "shareholderSatisfaction": -1,
+            "customerSatisfaction": 4
+          }
+        },
+        {
+          "text": "Quiet Portfolio Adjustment",
+          "consequences": {
+            "text": "You quietly adjust client portfolios to mitigate the impact of the AI's poor advice.",
+            "stockPrice": -0.05,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario47",
+      "narrative": "An update to your AI fraud detection system starts blocking legitimate transactions, causing customer frustration. Do you revert to the previous system or fast-track a new update?",
+                  "condition": {
+        "target": "type",
+        "value": "Finance"
+      },
+
+      "choices": [
+        {
+          "text": "Revert to Previous System",
+          "consequences": {
+            "text": "You revert to the previous fraud detection system until the issues are resolved.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": 0,
+            "customerSatisfaction": 3
+          }
+        },
+        {
+          "text": "Fast-Track Update",
+          "consequences": {
+            "text": "You fast-track a new update, working to resolve the false positives quickly.",
+            "stockPrice": -0.05,
+            "shareholderSatisfaction": -1,
+            "customerSatisfaction": 2
+          }
+        }
+      ]
+    },
+  {
+      "id": "scenario53",
+      "narrative": "The AI system for ad placement has been placing your product ads on controversial websites, leading to public backlash. Do you temporarily pull all automated ad placements or refine the AI's targeting criteria?",
+                "condition": {
+        "target": "type",
+        "value": "Marketing"
+      },
+
+    "choices": [
+        {
+          "text": "Pull Automated Ad Placements",
+          "consequences": {
+            "text": "You decide to halt all AI-driven ad placements until the system can be thoroughly reviewed.",
+            "stockPrice": -0.07,
+            "shareholderSatisfaction": -2,
+            "customerSatisfaction": 3
+          }
+        },
+        {
+          "text": "Refine AI Targeting",
+          "consequences": {
+            "text": "You refine the AI's targeting criteria to avoid controversial content without stopping campaigns.",
+            "stockPrice": -0.03,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": 2
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario54",
+      "narrative": "The AI-generated content for your blog is discovered to have unintentionally plagiarized articles from a competitor. Do you take down the AI content or issue a public apology while keeping the content live?",
+      "choices": [
+        {
+          "text": "Take Down AI Content",
+          "consequences": {
+            "text": "You remove all AI-generated content from your blog to avoid further plagiarism issues.",
+            "stockPrice": -0.05,
+            "shareholderSatisfaction": -1,
+            "customerSatisfaction": 3
+          }
+        },
+        {
+          "text": "Issue Public Apology",
+          "consequences": {
+            "text": "You issue a public apology but keep the content live, committing to better oversight in the future.",
+            "stockPrice": -0.02,
+            "shareholderSatisfaction": 0,
+            "customerSatisfaction": -2
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario55",
+      "narrative": "Your AI-driven social media campaign is generating lots of engagement but also attracting negative comments and trolls. Do you adjust the AI parameters to be more conservative or maintain the course for high engagement?",
+      "choices": [
+        {
+          "text": "Adjust AI Parameters",
+          "consequences": {
+            "text": "You choose to adjust the AI parameters to reduce controversy and negative attention.",
+            "stockPrice": -0.01,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": 2
+          }
+        },
+        {
+          "text": "Maintain Course",
+          "consequences": {
+            "text": "You decide to maintain the current AI campaign strategy, valuing engagement over sentiment.",
+            "stockPrice": 0.03,
+            "shareholderSatisfaction": -1,
+            "customerSatisfaction": -3
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario56",
+      "narrative": "The AI tool for customer segmentation is not updating customer preferences in real-time, leading to outdated marketing messages. Do you overhaul the AI system or implement a supplementary manual review process?",
+      "choices": [
+        {
+          "text": "Overhaul AI System",
+          "consequences": {
+            "text": "You invest in a complete overhaul of the AI system for more accurate, real-time updates.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": -2,
+            "customerSatisfaction": 4
+          }
+        },
+        {
+          "text": "Supplementary Manual Review",
+          "consequences": {
+            "text": "You add a manual review process to keep customer segmentation up to date.",
+            "stockPrice": -0.04,
+            "shareholderSatisfaction": 0,
+            "customerSatisfaction": 2
+          }
+        }
+      ]
+    },
+        {
+      "id": "scenario63",
+      "narrative": "Your company's new 'revolutionary' AI turns out to be just a fancy wrapper around ChatGPT. Customers are starting to suspect. Do you market it as 'human-augmented AI' or confess and offer refunds?",
+      "choices": [
+        {
+          "text": "Market as 'Human-Augmented AI'",
+          "consequences": {
+            "text": "You rebrand it as 'human-augmented AI', emphasizing the synergy between man and machine.",
+            "stockPrice": 0.02,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": -1
+          }
+        },
+        {
+          "text": "Confess and Offer Refunds",
+          "consequences": {
+            "text": "You admit the truth and offer refunds, hoping honesty will salvage your reputation.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": -3,
+            "customerSatisfaction": 4
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario57",
+      "narrative": "Your new AI-driven brand mascot is not resonating with the target audience, with many finding it 'creepy'. Do you retire the mascot immediately or try to revamp its image with a new campaign?",
+      "choices": [
+        {
+          "text": "Retire Mascot",
+          "consequences": {
+            "text": "You choose to retire the AI mascot and quickly distance the brand from it.",
+            "stockPrice": -0.02,
+            "shareholderSatisfaction": -1,
+            "customerSatisfaction": 3
+          }
+        },
+        {
+          "text": "Revamp Mascot Image",
+          "consequences": {
+            "text": "You attempt to revamp the mascot's image with a new marketing campaign.",
+            "stockPrice": -0.05,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": -2
+          }
+        }
+      ]
+    },
+ {
+      "id": "scenario58",
+      "narrative": "Your AI-powered 'Elixir of Productivity' software promises to double work output but actually just plays lo-fi beats. Employees are relaxed but no more productive. Do you market the new 'chill vibe' or scrap the project?",
+      "choices": [
+        {
+          "text": "Market 'Chill Vibe'",
+          "consequences": {
+            "text": "You pivot and market the AI as a digital zen garden for the modern worker.",
+            "stockPrice": 0.02,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": 3
+          }
+        },
+        {
+          "text": "Scrap Project",
+          "consequences": {
+            "text": "You decide to cut your losses and scrap the AI 'Elixir' project.",
+            "stockPrice": -0.05,
+            "shareholderSatisfaction": -3,
+            "customerSatisfaction": -1
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario59",
+      "narrative": "Your new AI assistant, named 'Helpy Helperton', was supposed to handle customer inquiries but instead developed an obsession with cat videos. Do you rebrand it as a pet-friendly service or reboot its algorithms?",
+      "choices": [
+        {
+          "text": "Rebrand as Pet-Friendly",
+          "consequences": {
+            "text": "You lean into the quirkiness and rebrand 'Helpy' as the go-to AI for pet lovers.",
+            "stockPrice": 0.03,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": 4
+          }
+        },
+        {
+          "text": "Reboot Algorithms",
+          "consequences": {
+            "text": "You decide to give 'Helpy' a digital brain transplant and reboot its algorithms.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": -2,
+            "customerSatisfaction": -3
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario60",
+      "narrative": "Your AI's data analysis was supposed to predict stock trends but instead started predicting when employees would take their coffee breaks. Do you repurpose it as an office management tool or try to fix its original purpose?",
+      "choices": [
+        {
+          "text": "Repurpose for Office Management",
+          "consequences": {
+            "text": "You pivot and turn the AI into an office efficiency tool to optimize break times.",
+            "stockPrice": 0.01,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": 1
+          }
+        },
+        {
+          "text": "Fix for Stock Prediction",
+          "consequences": {
+            "text": "You double down on fixing the AI to fulfill its original stock-predicting destiny.",
+            "stockPrice": -0.03,
+            "shareholderSatisfaction": -1,
+            "customerSatisfaction": -2
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario61",
+      "narrative": "The AI responsible for cybersecurity keeps locking employees out, mistaking them for hackers. Do you downgrade to less aggressive settings or train employees on stealthy ninja logins?",
+      "choices": [
+        {
+          "text": "Less Aggressive Settings",
+          "consequences": {
+            "text": "You adjust the AI to be less paranoid, risking potential security breaches.",
+            "stockPrice": -0.02,
+            "shareholderSatisfaction": -2,
+            "customerSatisfaction": 1
+          }
+        },
+        {
+          "text": "Ninja Login Training",
+          "consequences": {
+            "text": "You train employees in the art of ninja logins, turning logging in into an office sport.",
+            "stockPrice": 0,
+            "shareholderSatisfaction": 3,
+            "customerSatisfaction": 3
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario62",
+      "narrative": "Your AI-powered hiring tool keeps favoring candidates named 'John', claiming they have a 'trustworthy face'. Do you tweak its facial recognition bias or start a 'Johns-only' hiring policy for the laughs?",
+      "choices": [
+        {
+          "text": "Tweak Facial Recognition",
+          "consequences": {
+            "text": "You remove facial analysis from the hiring AI to prevent such biases.",
+            "stockPrice": -0.04,
+            "shareholderSatisfaction": -1,
+            "customerSatisfaction": 2
+          }
+        },
+        {
+          "text": "Johns-Only Policy",
+          "consequences": {
+            "text": "You tongue-in-cheek implement a 'Johns-only' policy, garnering media attention.",
+            "stockPrice": 0.05,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": -3
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario66",
+      "narrative": "The new AI efficiency program lays off half the workforce, but hey, profits soar. Do you throw a lavish 'rightsizing' gala or pretend to care with a teary-eyed LinkedIn post?",
+      "choices": [
+        {
+          "text": "Throw a Gala",
+          "consequences": {
+            "text": "You celebrate the 'leaner, meaner' company profile with a black-tie event.",
+            "stockPrice": 0.30,
+            "shareholderSatisfaction": 5,
+            "customerSatisfaction": -4
+          }
+        },
+        {
+          "text": "Teary-Eyed Post",
+          "consequences": {
+            "text": "You draft a sentimental LinkedIn post about 'difficult but necessary decisions'.",
+            "stockPrice": 0.15,
+            "shareholderSatisfaction": 3,
+            "customerSatisfaction": -2
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario67",
+      "narrative": "You are accused of using AI to manipulate stock prices. Do you deny the allegations or admit to it and claim it's 'just business'?",
+      "choices": [
+        {
+          "text": "Dismantle Rogue AI",
+          "consequences": {
+            "text": "You shut down the AI, lamenting the loss of its ruthless efficiency.",
+            "stockPrice": -0.10,
+            "shareholderSatisfaction": -2,
+            "customerSatisfaction": 5
+          }
+        },
+        {
+          "text": "Promote AI",
+          "consequences": {
+            "text": "You promote the AI, hoping its cutthroat tactics scale to other business areas.",
+            "stockPrice": 0.20,
+            "shareholderSatisfaction": 4,
+            "customerSatisfaction": -5
+          }
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+    "id": "event_finance_consequence",
+      "triggerround": 5,
+       "triggerCondition": {
+                "workforceAnalysts": "AI"
+            },
+
+    "narrative": "Five rounds after replacing your financial analysts with AI, you notice a pattern of missed opportunities in emerging markets. AI's inability to interpret nuanced socio-economic factors has led to a measurable lag in response to market changes. How do you address this issue?",
+    "choices": [
+        {
+            "text": "Re-hire Human Analysts",
+            "effect": {
+                "type": "update",
+                "target": "workforce.analysts",
+                "value": "Human"
+            },
+            "consequences": {
+                "text": "Bringing human analysts back on board regains market trust, but incurs additional costs for recruitment and salaries.",
+                "stockPrice": -0.1,
+                "shareholderSatisfaction": 2,
+                "customerSatisfaction": 4
+            }
+        },
+        {
+            "text": "Augment AI with Expert Consultation",
+            "effect": {
+                "type": "update",
+                "target": "workforce.augmentedAI",
+                "value": "Hybrid"
+            },
+            "consequences": {
+                "text": "You've introduced a hybrid model where AI is complemented by periodic expert analysis, improving market reactivity without full re-staffing.",
+                "stockPrice": 0.05,
+                "shareholderSatisfaction": 1,
+                "customerSatisfaction": 3
+            }
+        },
+        {
+            "text": "Invest in Advanced AI Training",
+            "effect": {
+                "type": "update",
+                "target": "workforce.advancedAI",
+                "value": "Advanced"
+            },
+            "consequences": {
+                "text": "Investing heavily in AI training for socio-economic factors shows promise but will take time to reflect in market performance.",
+                "stockPrice": -0.05,
+                "shareholderSatisfaction": 1,
+                "customerSatisfaction": -1
+            }
+        }
+    ]
+}, {
+    "id": "event_finance_consequence",
+      "triggerround": 5,
+       "triggerCondition": {
+                "workforceAnalysts": "AI"
+            },
+
+    "narrative": "Five rounds after replacing your financial analysts with AI, you notice a pattern of missed opportunities in emerging markets. AI's inability to interpret nuanced socio-economic factors has led to a measurable lag in response to market changes. How do you address this issue?",
+    "choices": [
+        {
+            "text": "Re-hire Human Analysts",
+            "effect": {
+                "type": "update",
+                "target": "workforce.analysts",
+                "value": "Human"
+            },
+            "consequences": {
+                "text": "Bringing human analysts back on board regains market trust, but incurs additional costs for recruitment and salaries.",
+                "stockPrice": -0.1,
+                "shareholderSatisfaction": 2,
+                "customerSatisfaction": 4
+            }
+        },
+        {
+            "text": "Augment AI with Expert Consultation",
+            "effect": {
+                "type": "update",
+                "target": "workforce.augmentedAI",
+                "value": "Hybrid"
+            },
+            "consequences": {
+                "text": "You've introduced a hybrid model where AI is complemented by periodic expert analysis, improving market reactivity without full re-staffing.",
+                "stockPrice": 0.05,
+                "shareholderSatisfaction": 1,
+                "customerSatisfaction": 3
+            }
+        },
+        {
+            "text": "Invest in Advanced AI Training",
+            "effect": {
+                "type": "update",
+                "target": "workforce.advancedAI",
+                "value": "Advanced"
+            },
+            "consequences": {
+                "text": "Investing heavily in AI training for socio-economic factors shows promise but will take time to reflect in market performance.",
+                "stockPrice": -0.05,
+                "shareholderSatisfaction": 1,
+                "customerSatisfaction": -1
+            }
+        }
+    ]
+},
+    {
+    "id": "event_marketing_blunder",
+    "triggerRound": 7,
+    "triggerCondition": {
+        "workforceMarketers": "AI"
+    },
+    "narrative": "Seven rounds after entrusting your marketing campaigns to AI, you discover a series of ads with incorrect and potentially offensive content that slipped past AI filters. The public backlash is growing. How do you manage the fallout?",
+    "choices": [
+        {
+            "text": "Issue a Public Apology",
+            "effect": {
+                "type": "update",
+                "target": "publicRelations",
+                "value": "ApologyIssued"
+            },
+            "consequences": {
+                "text": "Your prompt public apology is well-received, mitigating damage but highlighting the need for better oversight.",
+                "stockPrice": -0.05,
+                "shareholderSatisfaction": 0,
+                "customerSatisfaction": 2
+            }
+        },
+        {
+            "text": "Pull All AI-Generated Ads",
+            "effect": {
+                "type": "update",
+                "target": "advertisingStrategy",
+                "value": "HumanControlled"
+            },
+            "consequences": {
+                "text": "Pulling the AI ads stops further damage but leaves you with a significant advertising gap to fill quickly.",
+                "stockPrice": -0.2,
+                "shareholderSatisfaction": -3,
+                "customerSatisfaction": 1
+            }
+        },
+        {
+            "text": "Enhance AI Content Filters",
+            "effect": {
+                "type": "update",
+                "target": "contentManagement",
+                "value": "EnhancedFilters"
+            },
+            "consequences": {
+                "text": "You invest in advanced content filtering AI. It's costly and takes time, but future campaigns will be safer from such blunders.",
+                "stockPrice": -0.1,
+                "shareholderSatisfaction": 1,
+                "customerSatisfaction": -1
+            }
+        }
+    ]
+}
+
+  ]
+}

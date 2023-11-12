@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Future of Work</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: #333;
+        }
+        #start-button {
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #start-button:hover {
+            background-color: #0056b3;
+        }
+        #game-iframe {
+            display: none; /* Hide the iframe initially */
+            width: 100%;
+            height: 500px; /* Adjust the height as needed */
+            border: none;
+        }
+                .dark{
+            background-color: #222;
+            color: #e6e6e6;
+        }
+        .dark h1{
+            color: #e6e6e6;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome The Future of Work</h1>
+    <p>Are you ready to take on the challenges of managing a company in the age of AI?</p>
+    <button id="start-button">Start Game</button>
+
+    <!-- Add an iframe to load the game -->
+    <iframe id="game-iframe"></iframe>
+
+    <script>
+        // Add JavaScript logic to load the game in the iframe when the button is clicked
+        const startButton = document.getElementById("start-button");
+        const gameIframe = document.getElementById("game-iframe");
+
+        startButton.addEventListener("click", function () {
+            // Show the iframe
+            gameIframe.style.display = "block";
+
+            // give iframe a border
+            gameIframe.style.border = "1px solid black";
+
+            // curve the corners
+            gameIframe.style.borderRadius = "10px";
+
+            // Set the source (URL) of the iframe to your game page
+            gameIframe.src = "game.html"; // Replace "game.html" with your game's URL
+        });
+    </script>
+
+
+</body>
+</html>
