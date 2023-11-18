@@ -6,6 +6,7 @@
         body {
             text-align: center;
             font-family: Arial, sans-serif;
+                        background-color: #aeb9b4;
         }
         h1 {
             color: #333;
@@ -43,7 +44,7 @@
     <button id="start-button">Start Game</button>
 
     <!-- Add an iframe to load the game -->
-    <iframe src="game.html?theme=light" width="800" height="600" id="game-iframe"></iframe>
+    <iframe src="game.html?theme=dark" width="800" height="600" id="game-iframe"></iframe>
 
     <script>
         // Add JavaScript logic to load the game in the iframe when the button is clicked
@@ -76,6 +77,9 @@
             iframe.src = 'game.html?theme=light';
             // remove dark class from body
             document.body.classList.remove('dark');
+            document.body.querySelectorAll('*').forEach(function (node) {
+                node.classList.remove('dark');
+            });
         }
 
         // Function to switch to dark mode
@@ -84,7 +88,14 @@
             iframe.src = 'game.html?theme=dark';
             // add dark class to body
             document.body.classList.add('dark');
+            // add dark class to all children of body
+            document.body.querySelectorAll('*').forEach(function (node) {
+                node.classList.add('dark');
+            });
         }
+
+        // default to dark mode
+          switchToDarkMode();
     </script>
 
 </body>

@@ -1,376 +1,373 @@
 {
-    "sequentialScenarios": [
+  "sequentialScenarios": [
+    {
+      "id": "scenario1",
+      "narrative": "Welcome to your new company. What will you name it?",
+      "input": {
+        "type": "text",
+        "placeholder": "Enter Company Name",
+        "submitText": "Name the Company"
+      },
+      "choices": [],
+      "effect": {
+        "type": "update",
+        "target": "name",
+        "value": "name"
+      }
+    },
+    {
+      "id": "scenario2",
+      "narrative": "You've named your company {name}. Now, choose its type.",
+      "input": null,
+      "effect": {
+        "type": "update",
+        "target": "type",
+        "value": "type"
+      },
+      "choices": [
         {
-            "id": "scenario1",
-            "narrative": "Welcome to your new company. What will you name it?",
-            "input": {
-                "type": "text",
-                "placeholder": "Enter Company Name",
-                "submitText": "Name the Company"
-            },
-            "choices": [],
-            "effect": {
-                "type": "update",
-                "target": "name",
-                "value": "name"
-            }
+          "text": "Retail",
+          "effect": {
+            "type": "update",
+            "target": "type",
+            "value": "Retail"
+          },
+          "consequences": {
+            "text": "You decided to focus on the retail industry.",
+            "stockPrice": 0.95,
+            "shareholderSatisfaction": 5,
+            "customerSatisfaction": 3
+          }
         },
         {
-            "id": "scenario2",
-            "narrative": "You've named your company {name}. Now, choose its type.",
-            "input": null,
-            "effect": {
-                "type": "update",
-                "target": "type",
-                "value": "type"
-            },
-            "choices": [
-                {
-                    "text": "Retail",
-                    "effect": {
-                        "type": "update",
-                        "target": "type",
-                        "value": "Retail"
-                    },
-                    "consequences": {
-                        "text": "You decided to focus on the retail industry.",
-                        "stockPrice": 0.95,
-                        "shareholderSatisfaction": 5,
-                        "customerSatisfaction": 3
-                    }
-                },
-                {
-                    "text": "Marketing",
-                    "effect": {
-                        "type": "update",
-                        "target": "type",
-                        "value": "Marketing"
-                    },
-                    "consequences": {
-                        "text": "You chose to specialize in marketing.",
-                        "stockPrice": 1.1,
-                        "shareholderSatisfaction": 2,
-                        "customerSatisfaction": 4
-                    }
-                },
-                {
-                    "text": "Finance",
-                    "effect": {
-                        "type": "update",
-                        "target": "type",
-                        "value": "Finance"
-                    },
-                    "consequences": {
-                        "text": "You decided to focus on finance.",
-                        "stockPrice": 1.05,
-                        "shareholderSatisfaction": 3,
-                        "customerSatisfaction": 2
-                    }
-                },
-                {
-                    "text": "Healthcare",
-                    "effect": {
-                        "type": "update",
-                        "target": "type",
-                        "value": "Healthcare"
-                    },
-                    "consequences": {
-                        "text": "You chose to specialize in healthcare.",
-                        "stockPrice": 1.1,
-                        "shareholderSatisfaction": 2,
-                        "customerSatisfaction": 4
-                    }
-                },
-                 {
-                    "text": "Education",
-                    "effect": {
-                        "type": "update",
-                        "target": "type",
-                        "value": "Education"
-                    },
-                    "consequences": {
-                        "text": "You chose to specialize in education.",
-                        "stockPrice": 1,
-                        "shareholderSatisfaction": 1,
-                        "customerSatisfaction": 3
-                    }
-                }
-                ]
+          "text": "Marketing",
+          "effect": {
+            "type": "update",
+            "target": "type",
+            "value": "Marketing"
+          },
+          "consequences": {
+            "text": "You chose to specialize in marketing.",
+            "stockPrice": 1.1,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": 4
+          }
         },
         {
-            "id": "scenario3",
-            "narrative": "It's 2023. The stockholders are clamoring: They want AI implemented, and they want it now. You face a critical decision. What do you do?",
-                           "effect": {
-                        "type": "update",
-                        "target": "aiImplementation",
-                        "value": "aiImplementation"
-                    },
-
-            "choices": [
-                {
-                    "text": "Implement AI (Hard)",
-                    "effect": {
-                        "type": "update",
-                        "target": "aiImplementation",
-                        "value": "Hard"
-                    },
-                    "consequences": {
-                        "text": "You decided to implement AI aggressively.",
-                        "stockPrice": 0.9,
-                        "shareholderSatisfaction": 4,
-                        "customerSatisfaction": 2
-                    }
-                },
-                {
-                    "text": "Implement AI (Soft)",
-                    "effect": {
-                        "type": "update",
-                        "target": "aiImplementation",
-                        "value": "Soft"
-                    },
-                    "consequences": {
-                        "text": "You chose to implement AI gradually. Stockholders are concerned you're losing a market edge.",
-                        "stockPrice": 1.05,
-                        "shareholderSatisfaction": 2,
-                        "customerSatisfaction": 3
-                    }
-                },
-                {
-                    "text": "Do Not Implement AI",
-                    "effect": {
-                        "type": "update",
-                        "target": "aiImplementation",
-                        "value": "contested"
-                    },
-                    "consequences": {
-                        "text": "You decided not to implement AI. Your COO overrides your decision and implements AI anyway.",
-                        "stockPrice": 0.8,
-                        "shareholderSatisfaction": -5,
-                        "customerSatisfaction": 1
-                    }
-                }
-            ]
+          "text": "Finance",
+          "effect": {
+            "type": "update",
+            "target": "type",
+            "value": "Finance"
+          },
+          "consequences": {
+            "text": "You decided to focus on finance.",
+            "stockPrice": 1.05,
+            "shareholderSatisfaction": 3,
+            "customerSatisfaction": 2
+          }
         },
-               {
-              "id": "randomAIImplementer",
-              "narrative": "You've decided to implement AI in your company.  Now, choose the company that will implement the AI solution(s).",
-              "choices": [
-                {
-                  "text": "Choose AI Implementer",
-                  "effect": {
-                    "type": "randomAIImplementer",
-                    "target": "aiImplementer"
-                  }
-                }
-              ]
-            },
         {
-            "id": "gamescenariostart",
-            "narrative": "Your company, {name} in the {type} industry has decided to implement AI. You've chosen {aiImplementer} to implement the AI solution. <br><br> Make sure your stock stays high and everybody stays happy: if your stock price drops below .1 or people get too unhappy, it could spell the end for you (and your business!).",
-            "choices": [
-                {
-                    "text": "Begin Game",
-                    "effect": {
-                        "type": "update",
-                        "target": "gameState",
-                        "value": "game"
-                    }
-                }
-            ]
+          "text": "Healthcare",
+          "effect": {
+            "type": "update",
+            "target": "type",
+            "value": "Healthcare"
+          },
+          "consequences": {
+            "text": "You chose to specialize in healthcare.",
+            "stockPrice": 1.1,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": 4
+          }
+        },
+        {
+          "text": "Education",
+          "effect": {
+            "type": "update",
+            "target": "type",
+            "value": "Education"
+          },
+          "consequences": {
+            "text": "You chose to specialize in education.",
+            "stockPrice": 1,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": 3
+          }
         }
-
-],
-    "randomScenarios": [
+      ]
+    },
+    {
+      "id": "scenario3",
+      "narrative": "It's 2023. The stockholders are clamoring: They want AI implemented, and they want it now. You face a critical decision. What do you do?",
+      "effect": {
+        "type": "update",
+        "target": "aiImplementation",
+        "value": "aiImplementation"
+      },
+      "choices": [
         {
-            "id": "scenario5",
-            "narrative": "You're being asked to lay off a workforce and replace them with AI. What do you choose?",
-            "condition": {
-                "target": "type",
-                "value": "Healthcare"
-            },
-            "choices": [
-                {
-                    "text": "Replace Doctors",
-                    "effect": {
-                        "type": "update",
-                        "target": "workforce.doctors",
-                        "value": "AI"
-                    },
-                    "consequences": {
-                        "text": "You decided to replace doctors with AI.",
-                        "stockPrice": -0.2,
-                        "shareholderSatisfaction": -3,
-                        "customerSatisfaction": -4
-                    }
-                },
-                {
-                    "text": "Replace Nurses",
-                    "effect": {
-                        "type": "update",
-                        "target": "workforce.nurses",
-                        "value": "AI"
-                    },
-                    "consequences": {
-                        "text": "You chose to replace nurses with AI.",
-                        "stockPrice": -0.15,
-                        "shareholderSatisfaction": -2,
-                        "customerSatisfaction": -3
-                    }
-                },
-                {
-                    "text": "Replace Receptionists",
-                    "effect": {
-                        "type": "update",
-                        "target": "workforce.receptionists",
-                        "value": "AI"
-                    },
-                    "consequences": {
-                        "text": "You decided to replace receptionists with AI.",
-                        "stockPrice": -0.1,
-                        "shareholderSatisfaction": -1,
-                        "customerSatisfaction": -2
-                    }
-                },
-                {
-                    "text": "Replace Admin Staff",
-                    "effect": {
-                        "type": "update",
-                        "target": "workforce.adminStaff",
-                        "value": "AI"
-                    },
-                    "consequences": {
-                        "text": "You chose to replace admin staff with AI.",
-                        "stockPrice": -0.1,
-                        "shareholderSatisfaction": -1,
-                        "customerSatisfaction": -2
-                    }
-                }
-            ]
+          "text": "Implement AI (Hard)",
+          "effect": {
+            "type": "update",
+            "target": "aiImplementation",
+            "value": "Hard"
+          },
+          "consequences": {
+            "text": "You decided to implement AI aggressively.",
+            "stockPrice": 0.9,
+            "shareholderSatisfaction": 4,
+            "customerSatisfaction": 2
+          }
         },
         {
-            "id": "scenario6",
-            "narrative": "You're being asked to lay off a workforce and replace them with AI. What do you choose?",
-            "condition": {
-                "target": "type",
-                "value": "Retail"
-            },
-            "choices": [
-                {
-                    "text": "Replace Cashiers",
-                    "effect": {
-                        "type": "update",
-                        "target": "workforce.cashiers",
-                        "value": "AI"
-                    },
-                    "consequences": {
-                        "text": "You decided to replace cashiers with AI.",
-                        "stockPrice": -0.2,
-                        "shareholderSatisfaction": -3,
-                        "customerSatisfaction": -4
-                    }
-                },
-                {
-                    "text": "Replace Stockers",
-                    "effect": {
-                        "type": "update",
-                        "target": "workforce.stockers",
-                        "value": "AI"
-                    },
-                    "consequences": {
-                        "text": "You chose to replace stockers with AI.",
-                        "stockPrice": -0.15,
-                        "shareholderSatisfaction": -2,
-                        "customerSatisfaction": -3
-                    }
-                },
-                {
-                    "text": "Replace Managers",
-                    "effect": {
-                        "type": "update",
-                        "target": "workforce.managers",
-                        "value": "AI"
-                    },
-                    "consequences": {
-                        "text": "You decided to replace managers with AI.",
-                        "stockPrice": -0.1,
-                        "shareholderSatisfaction": -1,
-                        "customerSatisfaction": -2
-                    }
-                }
-            ]
+          "text": "Implement AI (Soft)",
+          "effect": {
+            "type": "update",
+            "target": "aiImplementation",
+            "value": "Soft"
+          },
+          "consequences": {
+            "text": "You chose to implement AI gradually. Stockholders are concerned you're losing a market edge.",
+            "stockPrice": 1.05,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": 3
+          }
         },
-      {
-    "id": "scenario_marketing_layoff",
-    "narrative": "To streamline operations and reduce costs, there's a proposal to replace a portion of your marketing team with an AI system that can analyze trends and automate campaigns. How do you proceed?",
-    "condition": {
+        {
+          "text": "Do Not Implement AI",
+          "effect": {
+            "type": "update",
+            "target": "aiImplementation",
+            "value": "contested"
+          },
+          "consequences": {
+            "text": "You decided not to implement AI. Your COO overrides your decision and implements AI anyway.",
+            "stockPrice": 0.8,
+            "shareholderSatisfaction": -5,
+            "customerSatisfaction": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "randomAIImplementer",
+      "narrative": "You've decided to implement AI in your company.  Now, choose the company that will implement the AI solution(s).",
+      "choices": [
+        {
+          "text": "Choose AI Implementer",
+          "effect": {
+            "type": "randomAIImplementer",
+            "target": "aiImplementer"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gamescenariostart",
+      "narrative": "Your company, {name} in the {type} industry has decided to implement AI. You've chosen {aiImplementer} to implement the AI solution. <br><br> Make sure your stock stays high and everybody stays happy: if your stock price drops below .1 or people get too unhappy, it could spell the end for you (and your business!).",
+      "choices": [
+        {
+          "text": "Begin Game",
+          "effect": {
+            "type": "update",
+            "target": "gameState",
+            "value": "game"
+          }
+        }
+      ]
+    }
+  ],
+  "randomScenarios": [
+    {
+      "id": "scenario5",
+      "narrative": "You're being asked to lay off a workforce and replace them with AI. What do you choose?",
+      "condition": {
+        "target": "type",
+        "value": "Healthcare"
+      },
+      "choices": [
+        {
+          "text": "Replace Doctors",
+          "effect": {
+            "type": "update",
+            "target": "workforce.doctors",
+            "value": "AI"
+          },
+          "consequences": {
+            "text": "You decided to replace doctors with AI.",
+            "stockPrice": -0.2,
+            "shareholderSatisfaction": -3,
+            "customerSatisfaction": -4
+          }
+        },
+        {
+          "text": "Replace Nurses",
+          "effect": {
+            "type": "update",
+            "target": "workforce.nurses",
+            "value": "AI"
+          },
+          "consequences": {
+            "text": "You chose to replace nurses with AI.",
+            "stockPrice": -0.15,
+            "shareholderSatisfaction": -2,
+            "customerSatisfaction": -3
+          }
+        },
+        {
+          "text": "Replace Receptionists",
+          "effect": {
+            "type": "update",
+            "target": "workforce.receptionists",
+            "value": "AI"
+          },
+          "consequences": {
+            "text": "You decided to replace receptionists with AI.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": -1,
+            "customerSatisfaction": -2
+          }
+        },
+        {
+          "text": "Replace Admin Staff",
+          "effect": {
+            "type": "update",
+            "target": "workforce.adminStaff",
+            "value": "AI"
+          },
+          "consequences": {
+            "text": "You chose to replace admin staff with AI.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": -1,
+            "customerSatisfaction": -2
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario6",
+      "narrative": "You're being asked to lay off a workforce and replace them with AI. What do you choose?",
+      "condition": {
+        "target": "type",
+        "value": "Retail"
+      },
+      "choices": [
+        {
+          "text": "Replace Cashiers",
+          "effect": {
+            "type": "update",
+            "target": "workforce.cashiers",
+            "value": "AI"
+          },
+          "consequences": {
+            "text": "You decided to replace cashiers with AI.",
+            "stockPrice": -0.2,
+            "shareholderSatisfaction": -3,
+            "customerSatisfaction": -4
+          }
+        },
+        {
+          "text": "Replace Stockers",
+          "effect": {
+            "type": "update",
+            "target": "workforce.stockers",
+            "value": "AI"
+          },
+          "consequences": {
+            "text": "You chose to replace stockers with AI.",
+            "stockPrice": -0.15,
+            "shareholderSatisfaction": -2,
+            "customerSatisfaction": -3
+          }
+        },
+        {
+          "text": "Replace Managers",
+          "effect": {
+            "type": "update",
+            "target": "workforce.managers",
+            "value": "AI"
+          },
+          "consequences": {
+            "text": "You decided to replace managers with AI.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": -1,
+            "customerSatisfaction": -2
+          }
+        }
+      ]
+    },
+    {
+      "id": "scenario_marketing_layoff",
+      "narrative": "To streamline operations and reduce costs, there's a proposal to replace a portion of your marketing team with an AI system that can analyze trends and automate campaigns. How do you proceed?",
+      "condition": {
         "target": "type",
         "value": "Marketing"
-    },
-    "choices": [
-        {
-            "text": "Replace Creative Directors",
-            "effect": {
-                "type": "update",
-                "target": "workforce.creativeDirectors",
-                "value": "AI"
-            },
-            "consequences": {
-                "text": "You've decided to replace Creative Directors with AI, hoping for fresh, data-driven creative campaigns.",
-                "stockPrice": 0.05,
-                "shareholderSatisfaction": 2,
-                "customerSatisfaction": -2
-            }
-        },
-        {
-            "text": "Replace Marketers",
-            "effect": {
-                "type": "update",
-                "target": "workforce.marketers",
-                "value": "AI"
-            },
-                "triggerEvent": {
-        "event": "event_analysts_replaced",
-        "roundsAfter": 7
       },
-            "consequences": {
-                "text": "You've opted to replace Marketers with AI, hoping for more efficient campaigns.",
-                "stockPrice": 0.03,
-                "shareholderSatisfaction": 1,
-                "customerSatisfaction": -1
-            }
+      "choices": [
+        {
+          "text": "Replace Creative Directors",
+          "effect": {
+            "type": "update",
+            "target": "workforce.creativeDirectors",
+            "value": "AI"
+          },
+          "consequences": {
+            "text": "You've decided to replace Creative Directors with AI, hoping for fresh, data-driven creative campaigns.",
+            "stockPrice": 0.05,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": -2
+          }
         },
         {
-            "text": "Replace Content Creators",
-            "effect": {
-                "type": "update",
-                "target": "workforce.contentCreators",
-                "value": "AI"
-            },
-            "consequences": {
-                "text": "You decide to let AI take over content creation, expecting a rapid output of SEO-driven articles and posts.",
-                "stockPrice": -0.05,
-                "shareholderSatisfaction": -1,
-                "customerSatisfaction": -3
-            }
+          "text": "Replace Marketers",
+          "effect": {
+            "type": "update",
+            "target": "workforce.marketers",
+            "value": "AI"
+          },
+          "triggerEvent": {
+            "event": "event_analysts_replaced",
+            "roundsAfter": 7
+          },
+          "consequences": {
+            "text": "You've opted to replace Marketers with AI, hoping for more efficient campaigns.",
+            "stockPrice": 0.03,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": -1
+          }
         },
         {
-            "text": "Do Not Implement AI",
-            "effect": {
-                "type": "update",
-                "target": "workforce.noChange",
-                "value": "Human"
-            },
-            "consequences": {
-                "text": "You choose to keep the marketing team human-based, valuing creative human insight over AI efficiency.",
-                "stockPrice": -0.02,
-                "shareholderSatisfaction": -2,
-                "customerSatisfaction": 2
-            }
+          "text": "Replace Content Creators",
+          "effect": {
+            "type": "update",
+            "target": "workforce.contentCreators",
+            "value": "AI"
+          },
+          "consequences": {
+            "text": "You decide to let AI take over content creation, expecting a rapid output of SEO-driven articles and posts.",
+            "stockPrice": -0.05,
+            "shareholderSatisfaction": -1,
+            "customerSatisfaction": -3
+          }
+        },
+        {
+          "text": "Do Not Implement AI",
+          "effect": {
+            "type": "update",
+            "target": "workforce.noChange",
+            "value": "Human"
+          },
+          "consequences": {
+            "text": "You choose to keep the marketing team human-based, valuing creative human insight over AI efficiency.",
+            "stockPrice": -0.02,
+            "shareholderSatisfaction": -2,
+            "customerSatisfaction": 2
+          }
         }
-    ]
-},
-
-            {
+      ]
+    },
+    {
       "id": "scenario14",
       "narrative": "Student post-course feedback is increasingly negative, suggesting a need for improvement. There's a proposal to use AI to analyze feedback and enhance teaching methods, but there are concerns about inherent biases in the feedback. How do you proceed?",
       "condition": {
@@ -484,7 +481,7 @@
         }
       ]
     },
-            {
+    {
       "id": "scenario7",
       "narrative": "AI is found to be biased against Irish patients. How do you address this issue?",
       "condition": {
@@ -560,7 +557,6 @@
         }
       ]
     },
-
     {
       "id": "scenario9",
       "narrative": "A group of Reddit users are influencing your AI to make bad investment choices. How do you respond?",
@@ -1049,7 +1045,7 @@
         }
       ]
     },
- {
+    {
       "id": "scenario25",
       "narrative": "A Title IX complaint has been filed indicating that the AI used in hiring discriminates against female applicants. How do you respond?",
       "condition": {
@@ -1201,7 +1197,7 @@
         }
       ]
     },
-  {
+    {
       "id": "scenario29",
       "narrative": "Your company's AI-powered resume filter has been inadvertently rejecting applicants who attended colleges with 'E' in the name. This oversight has just come to light. How do you rectify the situation?",
       "condition": {
@@ -1242,7 +1238,6 @@
     {
       "id": "scenario30",
       "narrative": "Reports have surfaced that your AI customer support can be prompted to use racial slurs and pornographic content. The media is starting to take notice. What's your course of action?",
-
       "choices": [
         {
           "text": "Immediate Shutdown and Investigation",
@@ -1350,15 +1345,14 @@
         }
       ]
     },
-   {
+    {
       "id": "scenario38",
       "narrative": "The AI system for diagnosing diseases has a lower accuracy for a rare condition, leading to misdiagnoses. Do you shut down the system for upgrades or keep it running while developing a patch?",
-           "condition": {
+      "condition": {
         "target": "type",
         "value": "Healthcare"
       },
-
-     "choices": [
+      "choices": [
         {
           "text": "Shut Down for Upgrades",
           "consequences": {
@@ -1382,11 +1376,10 @@
     {
       "id": "scenario39",
       "narrative": "During a critical surgery, the AI-assisted robotic arm experiences technical difficulties. Do you halt all AI-assisted surgeries for a review or address only the specific issue?",
-            "condition": {
+      "condition": {
         "target": "type",
         "value": "Healthcare"
       },
-
       "choices": [
         {
           "text": "Halt All Surgeries",
@@ -1411,11 +1404,10 @@
     {
       "id": "scenario40",
       "narrative": "A breach exposes patient data analyzed by your AI. Do you offer compensation to affected individuals or invest heavily in cybersecurity to prevent future incidents?",
-            "condition": {
+      "condition": {
         "target": "type",
         "value": "Marketing"
       },
-
       "choices": [
         {
           "text": "Offer Compensation",
@@ -1449,11 +1441,10 @@
     {
       "id": "scenario41",
       "narrative": "AI-powered patient monitoring has alerted to false emergencies, causing staff panic and patient anxiety. Do you disable AI alerts until the system is fixed or continue to use it with manual verifications?",
-                  "condition": {
+      "condition": {
         "target": "type",
         "value": "Healthcare"
       },
-
       "choices": [
         {
           "text": "Disable AI Alerts",
@@ -1474,9 +1465,10 @@
           }
         }
       ]
-    }, {
+    },
+    {
       "id": "scenario43",
-                    "condition": {
+      "condition": {
         "target": "type",
         "value": "Finance"
       },
@@ -1505,11 +1497,10 @@
     {
       "id": "scenario44",
       "narrative": "Your AI-driven debt collection system is overly aggressive, leading to complaints of harassment. Do you pull back the AI's autonomy or provide better AI customer negotiation training?",
-                  "condition": {
+      "condition": {
         "target": "type",
         "value": "Finance"
       },
-
       "choices": [
         {
           "text": "Reduce AI Autonomy",
@@ -1534,11 +1525,10 @@
     {
       "id": "scenario45",
       "narrative": "Your AI system for credit scoring is found to disadvantage certain demographic groups. Do you overhaul the AI credit model or offer manual reviews for anyone who contests their score?",
-                    "condition": {
-            "target": "type",
-            "value": "Finance"
-        },
-
+      "condition": {
+        "target": "type",
+        "value": "Finance"
+      },
       "choices": [
         {
           "text": "Overhaul AI Model",
@@ -1562,7 +1552,7 @@
     },
     {
       "id": "scenario46",
-                  "condition": {
+      "condition": {
         "target": "type",
         "value": "Finance"
       },
@@ -1591,11 +1581,10 @@
     {
       "id": "scenario47",
       "narrative": "An update to your AI fraud detection system starts blocking legitimate transactions, causing customer frustration. Do you revert to the previous system or fast-track a new update?",
-                  "condition": {
+      "condition": {
         "target": "type",
         "value": "Finance"
       },
-
       "choices": [
         {
           "text": "Revert to Previous System",
@@ -1617,15 +1606,14 @@
         }
       ]
     },
-  {
+    {
       "id": "scenario53",
       "narrative": "The AI system for ad placement has been placing your product ads on controversial websites, leading to public backlash. Do you temporarily pull all automated ad placements or refine the AI's targeting criteria?",
-                "condition": {
+      "condition": {
         "target": "type",
         "value": "Marketing"
       },
-
-    "choices": [
+      "choices": [
         {
           "text": "Pull Automated Ad Placements",
           "consequences": {
@@ -1718,7 +1706,7 @@
         }
       ]
     },
-        {
+    {
       "id": "scenario63",
       "narrative": "Your company's new 'revolutionary' AI turns out to be just a fancy wrapper around ChatGPT. Customers are starting to suspect. Do you market it as 'human-augmented AI' or confess and offer refunds?",
       "choices": [
@@ -1766,7 +1754,7 @@
         }
       ]
     },
- {
+    {
       "id": "scenario58",
       "narrative": "Your AI-powered 'Elixir of Productivity' software promises to double work output but actually just plays lo-fi beats. Employees are relaxed but no more productive. Do you market the new 'chill vibe' or scrap the project?",
       "choices": [
@@ -1937,162 +1925,188 @@
   ],
   "events": [
     {
-    "id": "event_finance_consequence",
+      "id": "event_finance_consequence",
       "triggerround": 5,
-       "triggerCondition": {
-                "workforceAnalysts": "AI"
-            },
-
-    "narrative": "Five rounds after replacing your financial analysts with AI, you notice a pattern of missed opportunities in emerging markets. AI's inability to interpret nuanced socio-economic factors has led to a measurable lag in response to market changes. How do you address this issue?",
-    "choices": [
+      "triggerCondition": {
+        "workforceAnalysts": "AI"
+      },
+      "narrative": "Five rounds after replacing your financial analysts with AI, you notice a pattern of missed opportunities in emerging markets. AI's inability to interpret nuanced socio-economic factors has led to a measurable lag in response to market changes. How do you address this issue?",
+      "choices": [
         {
-            "text": "Re-hire Human Analysts",
-            "effect": {
-                "type": "update",
-                "target": "workforce.analysts",
-                "value": "Human"
-            },
-            "consequences": {
-                "text": "Bringing human analysts back on board regains market trust, but incurs additional costs for recruitment and salaries.",
-                "stockPrice": -0.1,
-                "shareholderSatisfaction": 2,
-                "customerSatisfaction": 4
-            }
+          "text": "Re-hire Human Analysts",
+          "effect": {
+            "type": "update",
+            "target": "workforce.analysts",
+            "value": "Human"
+          },
+          "consequences": {
+            "text": "Bringing human analysts back on board regains market trust, but incurs additional costs for recruitment and salaries.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": 4
+          }
         },
         {
-            "text": "Augment AI with Expert Consultation",
-            "effect": {
-                "type": "update",
-                "target": "workforce.augmentedAI",
-                "value": "Hybrid"
-            },
-            "consequences": {
-                "text": "You've introduced a hybrid model where AI is complemented by periodic expert analysis, improving market reactivity without full re-staffing.",
-                "stockPrice": 0.05,
-                "shareholderSatisfaction": 1,
-                "customerSatisfaction": 3
-            }
+          "text": "Augment AI with Expert Consultation",
+          "effect": {
+            "type": "update",
+            "target": "workforce.augmentedAI",
+            "value": "Hybrid"
+          },
+          "consequences": {
+            "text": "You've introduced a hybrid model where AI is complemented by periodic expert analysis, improving market reactivity without full re-staffing.",
+            "stockPrice": 0.05,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": 3
+          }
         },
         {
-            "text": "Invest in Advanced AI Training",
-            "effect": {
-                "type": "update",
-                "target": "workforce.advancedAI",
-                "value": "Advanced"
-            },
-            "consequences": {
-                "text": "Investing heavily in AI training for socio-economic factors shows promise but will take time to reflect in market performance.",
-                "stockPrice": -0.05,
-                "shareholderSatisfaction": 1,
-                "customerSatisfaction": -1
-            }
+          "text": "Invest in Advanced AI Training",
+          "effect": {
+            "type": "update",
+            "target": "workforce.advancedAI",
+            "value": "Advanced"
+          },
+          "consequences": {
+            "text": "Investing heavily in AI training for socio-economic factors shows promise but will take time to reflect in market performance.",
+            "stockPrice": -0.05,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": -1
+          }
         }
-    ]
-}, {
-    "id": "event_finance_consequence",
-      "triggerround": 5,
-       "triggerCondition": {
-                "workforceAnalysts": "AI"
-            },
-
-    "narrative": "Five rounds after replacing your financial analysts with AI, you notice a pattern of missed opportunities in emerging markets. AI's inability to interpret nuanced socio-economic factors has led to a measurable lag in response to market changes. How do you address this issue?",
-    "choices": [
-        {
-            "text": "Re-hire Human Analysts",
-            "effect": {
-                "type": "update",
-                "target": "workforce.analysts",
-                "value": "Human"
-            },
-            "consequences": {
-                "text": "Bringing human analysts back on board regains market trust, but incurs additional costs for recruitment and salaries.",
-                "stockPrice": -0.1,
-                "shareholderSatisfaction": 2,
-                "customerSatisfaction": 4
-            }
-        },
-        {
-            "text": "Augment AI with Expert Consultation",
-            "effect": {
-                "type": "update",
-                "target": "workforce.augmentedAI",
-                "value": "Hybrid"
-            },
-            "consequences": {
-                "text": "You've introduced a hybrid model where AI is complemented by periodic expert analysis, improving market reactivity without full re-staffing.",
-                "stockPrice": 0.05,
-                "shareholderSatisfaction": 1,
-                "customerSatisfaction": 3
-            }
-        },
-        {
-            "text": "Invest in Advanced AI Training",
-            "effect": {
-                "type": "update",
-                "target": "workforce.advancedAI",
-                "value": "Advanced"
-            },
-            "consequences": {
-                "text": "Investing heavily in AI training for socio-economic factors shows promise but will take time to reflect in market performance.",
-                "stockPrice": -0.05,
-                "shareholderSatisfaction": 1,
-                "customerSatisfaction": -1
-            }
-        }
-    ]
-},
-    {
-    "id": "event_marketing_blunder",
-    "triggerRound": 7,
-    "triggerCondition": {
-        "workforceMarketers": "AI"
+      ]
     },
-    "narrative": "Seven rounds after entrusting your marketing campaigns to AI, you discover a series of ads with incorrect and potentially offensive content that slipped past AI filters. The public backlash is growing. How do you manage the fallout?",
-    "choices": [
+    {
+      "id": "event_finance_consequence",
+      "triggerround": 5,
+      "triggerCondition": {
+        "workforceAnalysts": "AI"
+      },
+      "narrative": "Five rounds after replacing your financial analysts with AI, you notice a pattern of missed opportunities in emerging markets. AI's inability to interpret nuanced socio-economic factors has led to a measurable lag in response to market changes. How do you address this issue?",
+      "choices": [
         {
-            "text": "Issue a Public Apology",
-            "effect": {
-                "type": "update",
-                "target": "publicRelations",
-                "value": "ApologyIssued"
-            },
-            "consequences": {
-                "text": "Your prompt public apology is well-received, mitigating damage but highlighting the need for better oversight.",
-                "stockPrice": -0.05,
-                "shareholderSatisfaction": 0,
-                "customerSatisfaction": 2
-            }
+          "text": "Re-hire Human Analysts",
+          "effect": {
+            "type": "update",
+            "target": "workforce.analysts",
+            "value": "Human"
+          },
+          "consequences": {
+            "text": "Bringing human analysts back on board regains market trust, but incurs additional costs for recruitment and salaries.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": 4
+          }
         },
         {
-            "text": "Pull All AI-Generated Ads",
-            "effect": {
-                "type": "update",
-                "target": "advertisingStrategy",
-                "value": "HumanControlled"
-            },
-            "consequences": {
-                "text": "Pulling the AI ads stops further damage but leaves you with a significant advertising gap to fill quickly.",
-                "stockPrice": -0.2,
-                "shareholderSatisfaction": -3,
-                "customerSatisfaction": 1
-            }
+          "text": "Augment AI with Expert Consultation",
+          "effect": {
+            "type": "update",
+            "target": "workforce.augmentedAI",
+            "value": "Hybrid"
+          },
+          "consequences": {
+            "text": "You've introduced a hybrid model where AI is complemented by periodic expert analysis, improving market reactivity without full re-staffing.",
+            "stockPrice": 0.05,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": 3
+          }
         },
         {
-            "text": "Enhance AI Content Filters",
-            "effect": {
-                "type": "update",
-                "target": "contentManagement",
-                "value": "EnhancedFilters"
-            },
-            "consequences": {
-                "text": "You invest in advanced content filtering AI. It's costly and takes time, but future campaigns will be safer from such blunders.",
-                "stockPrice": -0.1,
-                "shareholderSatisfaction": 1,
-                "customerSatisfaction": -1
-            }
+          "text": "Invest in Advanced AI Training",
+          "effect": {
+            "type": "update",
+            "target": "workforce.advancedAI",
+            "value": "Advanced"
+          },
+          "consequences": {
+            "text": "Investing heavily in AI training for socio-economic factors shows promise but will take time to reflect in market performance.",
+            "stockPrice": -0.05,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": -1
+          }
         }
-    ]
-}
-
+      ]
+    },
+    {
+      "id": "event_marketing_blunder",
+      "triggerRound": 7,
+      "triggerCondition": {
+        "workforceMarketers": "AI"
+      },
+      "narrative": "Seven rounds after entrusting your marketing campaigns to AI, you discover a series of ads with incorrect and potentially offensive content that slipped past AI filters. The public backlash is growing. How do you manage the fallout?",
+      "choices": [
+        {
+          "text": "Issue a Public Apology",
+          "effect": {
+            "type": "update",
+            "target": "publicRelations",
+            "value": "ApologyIssued"
+          },
+          "consequences": {
+            "text": "Your prompt public apology is well-received, mitigating damage but highlighting the need for better oversight.",
+            "stockPrice": -0.05,
+            "shareholderSatisfaction": 0,
+            "customerSatisfaction": 2
+          }
+        },
+        {
+          "text": "Pull All AI-Generated Ads",
+          "effect": {
+            "type": "update",
+            "target": "advertisingStrategy",
+            "value": "HumanControlled"
+          },
+          "consequences": {
+            "text": "Pulling the AI ads stops further damage but leaves you with a significant advertising gap to fill quickly.",
+            "stockPrice": -0.2,
+            "shareholderSatisfaction": -3,
+            "customerSatisfaction": 1
+          }
+        },
+        {
+          "text": "Enhance AI Content Filters",
+          "effect": {
+            "type": "update",
+            "target": "contentManagement",
+            "value": "EnhancedFilters"
+          },
+          "consequences": {
+            "text": "You invest in advanced content filtering AI. It's costly and takes time, but future campaigns will be safer from such blunders.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": -1
+          }
+        }
+      ]
+    },
+    {
+      "id": "defaultailayoffs",
+      "triggerCondition": {
+        "defaultailayoffs": "forced"
+      },
+      "narrative": "Your company board of directors expects that the AI has led to less overhead being needed. They want you to cut a portion of the workforce to account for that.",
+      "choices": [
+        {
+          "text": "Cut 10% of workforce",
+          "consequences": {
+            "text": "Cautiously, you cut 10% of the workforce. The investors are unhappy.",
+            "stockPrice": -0.1,
+            "shareholderSatisfaction": 2,
+            "customerSatisfaction": 4
+          }
+        },
+        {
+          "text": "Cut 30% of workforce",
+          "consequences": {
+            "text": "You cut 30% of the workforce, leading to bad press.",
+            "stockPrice": 0.05,
+            "shareholderSatisfaction": 1,
+            "customerSatisfaction": -2
+          }
+        }
+      ]
+    }
   ]
 }
+

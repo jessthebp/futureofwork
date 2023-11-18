@@ -10,6 +10,10 @@ let companyData = {
     'round': 1,
 };
 
+let eventdata = {
+
+}
+
 let sequentialScenarios; // Define the variable to store the game data
 let randomScenarios;
 let randomEvents;
@@ -74,6 +78,13 @@ let endgameEvents = [
     effect: 'endgame'
   }
 ];
+
+
+eventdata.defaultailayoffs = {
+  eventName: 'forced',
+  trigger: 7
+};
+
 // Function to update the display
 function updateScoreDisplay() {
   const companyNameDisplay = document.getElementById('companyNameDisplay');
@@ -107,8 +118,43 @@ function handleConsequences(consequences) {
     updateScoreDisplay();
 }
 
+function handleEventTriggers() {
+    console.log("HANDLING EVENTS")
+    console.log(eventdata)
+      for (const eventName in eventdata) {
+          if (eventdata.hasOwnProperty(eventName)) {
+              const event = eventdata[eventName];
+              // get the info from events json if eventname and id are the same
+              const matchingEvent = events.find(e => e.id === eventName);
+
+              if (matchingEvent) {
+                  // Here, 'matchingEvent' contains the event data from 'eventsData'
+                  console.log(`Handling event '${eventName}':`);
+                  console.log(matchingEvent);
+                  // Decrement the trigger count each round
+                  if (event.trigger > 0) {
+                      console.log(event)
+                      console.log(event.trigger)
+                      console.log('countdown.... -1')
+                      event.trigger--;
+
+                      // Check if the trigger has reached 0 and the event type is 'forced'
+                      if (event.trigger === 1) {
+                          // Trigger the event
+                          console.log(`Event triggered: ${event.narrative}`);
 
 
+                      }
+                  }
+                  // Now you can perform actions based on the matching event
+                  // For example, trigger the event or apply its consequences
+              } else {
+                  console.log(`No matching event found for '${eventName}'`);
+              }
+
+          }
+      }
+}
 
 let sequentialScenarioIndex = 0; // Initialize the index for sequential scenarios
 
@@ -164,10 +210,6 @@ function formatNarrative(narrative, companyData) {
   return narrative;
 }
 
-
-
-
-// Function to present the next scenario
 // Function to present the next scenario
 function presentNextScenario() {
     // Check if there are any more sequential scenarios to present
@@ -276,7 +318,6 @@ function presentNextScenario() {
         const relevantScenarios = newScenarios.filter(scenario => {
             // check if scenario is in history
             if (scenarioHistory.includes(scenario.id)) return false;
-            console.log(scenarioHistory)
             if (!scenario.condition) return true; // If no condition is specified, the scenario is always relevant
             // Check if the condition matches the current company data
             //companyData.triggerEventRound[scenario.condition.target] = companyData.round;
@@ -284,7 +325,6 @@ function presentNextScenario() {
 
             return companyData[scenario.condition.target] === scenario.condition.value;
         });
-        console.log(relevantScenarios)
         // Select a random scenario from the filtered list
         const scenario = getRandomScenario(relevantScenarios);
         if (scenario) {
@@ -374,18 +414,6 @@ function addToScenarioHistory(scenario) {
             presentNextScenario();
         }
     }
-}
-function checkForEvents() {
-  Object.keys(companyData.eventsTriggerRound).forEach(eventId => {
-    if (companyData.round === companyData.eventsTriggerRound[eventId]) {
-      let event = events.find(e => e.id === eventId);
-      if (event && event.triggerCondition && companyData[event.triggerCondition.workforceAnalysts] === "AI") {
-        presentEvent(event);
-        // Reset the trigger round to avoid re-triggering
-        companyData.eventsTriggerRound[eventId] = null;
-      }
-    }
-  });
 }
 
 function displayChoiceScenario(scenario) {
@@ -544,6 +572,7 @@ function handleEndgame(effect) {
 
 function handleRoundProgression() {
   companyData.round++; // Increment round number
+    handleEventTriggers()
   console.log('Round: ' + companyData.round);
     // check if event should be triggered
    // checkForEvents();

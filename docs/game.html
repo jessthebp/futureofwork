@@ -6,9 +6,15 @@
         body {
             text-align: center;
             font-family: Arial, sans-serif;
+            background-color: #aeb9b4;
         }
         #game-text {
             margin-bottom: 20px;
+            background-color: #aeb9b4;
+        }
+        .dark #game-text{
+            background-color: #222;
+            color: #aeb9b4;
         }
         .choice-button {
             padding: 10px 20px;
@@ -35,6 +41,10 @@
             color: #222;
 
                 }
+                .dark .choice-button:hover {
+            background-color: #aeb9b4;
+            color: #222;
+                }
     </style>
 </head>
 <body>
@@ -53,16 +63,26 @@
         function toggleDarkMode() {
             const queryParams = new URLSearchParams(window.location.search);
             const theme = queryParams.get('theme');
+                 const children = document.body.children;
 
             if (theme === 'dark') {
                 document.body.classList.add('dark');
+                for (let i = 0; i < children.length; i++) {
+                    children[i].classList.add('dark');
+                }
             } else {
                 document.body.classList.remove('dark');
+                for (let i = 0; i < children.length; i++) {
+                    children[i].classList.remove('dark');
+                }
             }
         }
 
         // Call the toggleDarkMode function when the page loads
         window.addEventListener('DOMContentLoaded', toggleDarkMode);
+        // Call the toggleDarkMode function when the query parameter changes
+        window.addEventListener('popstate', toggleDarkMode);
+
     </script>
 </body>
 </html>
