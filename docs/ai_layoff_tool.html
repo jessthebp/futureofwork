@@ -5,17 +5,82 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Layoff Machine</title>
 <link rel="stylesheet" href="css/styles.css">
+<style>
+        html,
+    body {
+      width: 100vw;
+      min-height: 100vh;
+      background-color: black;
+      color: white;
+      padding-left: 5%;
+      padding-right: 5%;
+    }
+    .text-glow {
+  text-shadow: 0 0 80px rgb(192 219 255 / 75%), 0 0 32px rgb(65 120 255 / 24%);
+}
+    .text-gradient {
+  background: linear-gradient(to right, #30CFD0, #c43ad6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
+    :root {
+  /* violet */
+  --primary-color: 111, 76, 255;
+
+  /* white */
+  --text-color: 256, 256, 256;
+}
+
+    .btn {
+  font-family: sans-serif;
+  font-size: 18px;
+  padding: 12px 32px;
+  margin: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  border-radius: 50px;
+}
+
+    .btn-glow:hover {
+  box-shadow: rgba(var(--primary-color), 0.5) 0px 0px 20px 0px;
+}
+.btn {
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transition: all 0.3s ease;
+}
+.btn-primary {
+  background-color: rgb(var(--primary-color));
+  border: 1px solid rgb(var(--primary-color));
+  color: rgb(var(--text-color));
+}
+
+.container {
+    background-color: #222222;
+}
+#result {
+    color: white;
+    background: linear-gradient(#09354d, #6a47be);
+}
+a {
+    color: #defeff;
+}
+</style>
 </head>
 
 <body>
 <div class="container">
-<h1>AI Stakeholder Tool</h1>
+<h1 class="text-glow text-gradient">AI Stakeholder Tool</h1>
     <div class="description">
-<p>As we navigate towards a future shaped by rapid technological advancement and shifting market dynamics, organizations are increasingly seeking innovative strategies to streamline.
+        <p> About this tool....</p>
+<p>As we navigate towards a future shaped by rapid technological advancement and shifting market dynamics, organizations are increasingly seeking innovative strategies to streamline operations and drive growth. <br> <br>
     <br> <br>
-    By investing in advanced technologies such as AI and machine learning, companies can unlock new efficiencies, foster agility, and maintain competitive advantage in an ever-evolving business landscape,  </p>
-<p>In short, this tool allows you to discover the best areas for redundancy while using AI tools.</p>
+    By investing in advanced technologies such as AI and machine learning, companies can unlock new efficiencies, foster agility, and maintain competitive advantage in an ever-evolving business landscape, with synergy and a drive towards stockholder happiness.  </p>
+<p>In short, this tool allows you to discover the best areas for redundancy where AI tools can replace workers.</p>
         </div>
 </div>
 <br>
@@ -23,12 +88,15 @@
 <div class="container">
 
 <p>This state-of-the-art tool is designed to revolutionize the way companies think about their leadership. By simply "uploading" the LinkedIn URL of a company, our tool leverages advanced AI algorithms to analyze the company profile and suggest innovative AI-driven solutions.</p>
+ <p> Just plug in your company linkedin URL (it should look like this: https://www.linkedin.com/company/meta/) and press the go button for LLM success.</p>
     <input type="text" id="linkedinUrl" placeholder="Enter your LinkedIn company URL">
-    <button id="extractButton">Extract Company Name</button>
+    <button id="extractButton" class="btn btn-glow btn-primary">Extract Company Name</button>
     <div id="result"></div>
 </div>
 <script src="script.js"></script>
-
+<div class="container">
+<footer>made without love by <a href="https://jessbpeck.com"> jess</a></footer>
+</div>
 </body>
 
 </html>
